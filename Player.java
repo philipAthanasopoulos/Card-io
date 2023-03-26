@@ -9,7 +9,7 @@ public class Player{
         this.score = 0;
     }
 
-    public void play(int posx , int posy){
-        
+    public void play(int cardGroup){
+
     }
 }
