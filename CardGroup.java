@@ -20,4 +20,23 @@ public class CardGroup {
             return true;
         }
     }
+
+    public int getGroupSize() {
+        return this.groupSize;
+    }
+
+    public void setGroupSize(int groupSize) {
+        this.groupSize = groupSize;
+    }
+
+    public int getMaxCardsToRemove() {
+        return this.maxCardsToRemove;
+    }
+
+    public void setMaxCardsToRemove(int maxCardsToRemove) {
+        this.maxCardsToRemove = maxCardsToRemove;
+    }
+
+
+
 }
