@@ -16,5 +16,29 @@ public class CardDealer {
     public void createCardDeck(int numOfCards , int numOfGroups){
         
     }
+
+    public int getNumOfCards() {
+        return this.numOfCards;
+    }
+
+    public void setNumOfCards(int numOfCards) {
+        this.numOfCards = numOfCards;
+    }
+
+    public int getNumOfGroups() {
+        return this.numOfGroups;
+    }
+
+    public void setNumOfGroups(int numOfGroups) {
+        this.numOfGroups = numOfGroups;
+    }
+
+    public List getCardDeck() {
+        return this.cardDeck;
+    }
+
+    public void setCardDeck(List cardDeck) {
+        this.cardDeck = cardDeck;
+    }
     
 }
