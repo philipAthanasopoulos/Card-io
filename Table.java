@@ -8,7 +8,7 @@ public class Table {
     public void createCardGroups(int numOfCards , int numOfGroups){
 
     }
-  public static void main(String[], args) {
+  public static void main(String[] args) {
 	  System.out.println("Malaks");
   }
 
