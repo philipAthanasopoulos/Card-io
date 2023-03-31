@@ -3,13 +3,17 @@ package ask2;
 import java.util.List;
 
 public class CardGroup {
-    private int groupSize;
+    private int groupSize=2;
     private int maxCardsToRemove;
 
 
-    public CardGroup(int groupSize , int maxCardsToRemove){
-        this.groupSize = groupSize;
+    /*public CardGroup(int addedGroupSize , int maxCardsToRemove){
+        this.groupSize += addedGroupSize;
         this.maxCardsToRemove = maxCardsToRemove;
+    }
+    */
+    public CardGroup(int addedGroupSize){
+        this.groupSize += addedGroupSize;
     }
 
     public boolean removeCards(int cardsToRemove){
