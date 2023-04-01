@@ -21,13 +21,12 @@ public class Table {
     
   public static void main(String[] args) {
 
+    //init players and keyboard
     input = new Scanner(System.in);
     System.out.println("Please enter your name : ");
     player = new Player(input.next());
     cardDealer = new CardDealer();
     spasmenoBotaki = new Botaki("AI");
-
-   
 
 
     cardDealer.askingDealer();
@@ -50,11 +49,7 @@ public class Table {
         int numOfCards = input.nextInt();
         cardDealer.removeCards(group , numOfCards);
         whoPlayedLast = true;
-        
       }
-
-
-
 
     }
     calculateWinner();
