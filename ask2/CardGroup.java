@@ -11,9 +11,9 @@ public class CardGroup {
         this.maxCardsToRemove = maxCardsToRemove;
     }
     */
-    public CardGroup(int addedGroupSize){
+    public CardGroup(int addedGroupSize, int maxCardsToRemove){
         this.cardsGroup += addedGroupSize;
-        this.maxCardsToRemove = cardsGroup - 1;
+        this.maxCardsToRemove = maxCardsToRemove;
     }
 
     public boolean removeCards(int cardsToRemove){

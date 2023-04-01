@@ -1,22 +1,35 @@
 
+/*Bullshido:
+import java.security.SecureRandom;
 
+public class RandomIntegerGenerator {
+    public static void main(String[] args) {
+        SecureRandom random = new SecureRandom();
+        int lowerBound = 1; // set the lower bound
+        int upperBound = 100; // set the upper bound
+        int randomInt = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+        System.out.println(randomInt);
+    }
+}
+ */
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
+import java.security.SecureRandom;
+import java.util.Collections;
 public class CardDealer {
     //Total number of Cards that arent in group. Dealer just shares the cards to groups
     private int totalNumOfCards;
     private int numOfGroups;
     private List<CardGroup> groups = new ArrayList<CardGroup>();
     //Creating a list that holds each size of Group
-    List<Integer> Groups = new ArrayList<>();
     //Here i declare a randomIndex from Groups's list
-    private int randomIndex;
+    private int randomNumber;
     private int groupSize=0;
     private int remainingCards;
-    Random randomGroups = new Random();
+    private int lowerBound=1;
 
     /*public CardDealer(){
        
@@ -32,21 +45,24 @@ public class CardDealer {
          createCardDeck(totalNumOfCards, numOfGroups);
     }
 
-
+    //Creating Deck 
+    //BEGINING 
     public void createCardDeck(int totalNumOfCards , int numOfGroups){
         //Every group has at least 2 cards, so i subtract them from totalNumOfCards
         //For instance, if i have 40 cards and 4 groups, then remainingCards = 40 -2 * 4
         //I have placed groupSize of CardGroup's Constructor to be 2 by default
         this.groupSize = numOfGroups;
          remainingCards = totalNumOfCards - 2 * numOfGroups;
+         int max;
         //System.out.println("Malakas");
-        Random random = new Random();
+        SecureRandom random = new SecureRandom();
         //If remaining cards are 0, that means that i have groups with exactly 2 cards.
         if(remainingCards == 0){
             for(int i=0; i<numOfGroups; i++){
                 //System.out.println("Kourampies");
-                groups.add(new CardGroup(0));
-                Groups.add(new CardGroup(0).getCardsGroup());
+                //MaxCardsToRemove are between 1-2
+                groups.add(new CardGroup(0, lowerBound));
+                //Groups.add(new CardGroup(0).getCardsGroup());
             }
         }
         //If totalNumOfCards/numOfGroups < 2 -> Groups are too many
@@ -66,7 +82,8 @@ public class CardDealer {
                 else{
                     //System.out.println("Malakas 2");
                     //Here, i choose a number between 0 - remainingCards
-                    cardsForGroup = random.nextInt(remainingCards);
+                    //cardsForGroup = random.nextInt(remainingCards);
+                    cardsForGroup = random.nextInt(remainingCards - lowerBound + 1) + lowerBound; 
                     remainingCards -= cardsForGroup;
                 }
                 //edo ta kano add stin lista ton stoivadon. To 1o stoixeio tha einai i proti
@@ -75,22 +92,25 @@ public class CardDealer {
                 //with these specific characteristics.
                 if (remainingCards==0){
                     //System.out.println("Lene pos eimai trelos");
-                    groups.add(new CardGroup(remainingCards));
+                        //maxCardsToRemove.nextInt(upperbound - lowerbound)+ lowerbound)
+                    groups.add(new CardGroup(remainingCards,lowerBound));
                     //Here i add them to the list of Groups that are Integers
-                    Groups.add(new CardGroup(remainingCards).getCardsGroup());
+                    //Groups.add(new CardGroup(remainingCards).getCardsGroup());
                 }
                 else{
                     //System.out.println("Helllo there");
-                    groups.add(new CardGroup(cardsForGroup));
+                    max = random.nextInt(remainingCards - lowerBound + 1) + lowerBound;
+                    groups.add(new CardGroup(cardsForGroup, max));
                     //Here i add them to the list of Groups that are Integers
-                    Groups.add(new CardGroup(cardsForGroup).getCardsGroup());
+                    //Groups.add(new CardGroup(cardsForGroup).getCardsGroup());
                 }
                 
             }
         
         }
+        Collections.shuffle(groups);
     }
-
+    //END
 
     public int getNumOfCards() {
         return this.totalNumOfCards;
@@ -123,7 +143,7 @@ public class CardDealer {
     public void readingArrayList(){
         for(int i=0; i<groupSize; i++){
             //dimiourgo ena randomIndex gia na grabbaro ena
-            randomIndex = randomGroups.nextInt(Groups.size());
+            //randomIndex = randomGroups.nextInt(Groups.size());
 
             /*System.out.print("Group " +i);
             System.out.print(": ");
@@ -131,14 +151,14 @@ public class CardDealer {
              */
             System.out.print("Group " +i);
             System.out.print(": ");
-            System.out.print(Groups.get(randomIndex));
+            System.out.print(groups.get(i).getCardsGroup());
+            System.out.print("  Max cards to remove ---> " +groups.get(i).getMaxCardsToRemove());
             System.out.println();
  
             // add element in temporary list
             //newList.add(list.get(randomIndex));
  
             // Remove selected element from original list
-            Groups.remove(randomIndex);
 
         }
     }
