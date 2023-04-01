@@ -14,14 +14,8 @@ public class Table {
     
 
 
-
-    public Table(){
-
-    }
-
     public  static void calculateWinner(){
-      if(whoPlayedLast) winner = player.getName();
-      else winner = "AI";
+      winner = whoPlayedLast ? player.getName() : spasmenoBotaki.getName();
     }
   
     
@@ -31,7 +25,7 @@ public class Table {
     System.out.println("Please enter your name : ");
     player = new Player(input.next());
     cardDealer = new CardDealer();
-    spasmenoBotaki = new Botaki();
+    spasmenoBotaki = new Botaki("AI");
 
    
 
@@ -41,15 +35,22 @@ public class Table {
 
     while(cardDealer.getNumOfCards() > 0){
       cardDealer.readingArrayList();
+
+
       if(whoPlayedLast) {
+        spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
+        cardDealer.removeCards(spasmenoBotaki.getGroupToPlay() , spasmenoBotaki.getCardsToRemove());
+        whoPlayedLast = false;
+      }
+      
+      
+      else{
         System.out.println("Choose a group and the number of cards to remove");
         int group = input.nextInt();
         int numOfCards = input.nextInt();
         cardDealer.removeCards(group , numOfCards);
-      }
-      //botaki code
-      else{
-
+        whoPlayedLast = true;
+        
       }
 
 

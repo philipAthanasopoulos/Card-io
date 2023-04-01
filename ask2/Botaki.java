@@ -1,6 +1,10 @@
 
 
 public class Botaki extends Player {
+    public Botaki(String name) {
+        super(name);
+    }
+
     private int groupToPlay;
     private int cardsToRemove;
 
