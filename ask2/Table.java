@@ -1,28 +1,48 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Table {
-    private int numOfCards;
-    private int numOfGroups;
+    private static Player player;
+    private static CardDealer cardDealer;
+    private static Botaki spasmenoBotaki;  
+    private static Scanner input;
+    private boolean whoPlayedLast; // true is for human false is for machine
+    
+
+
+
     public Table(){
 
     }
-    /*public void createCardGroups(int numOfCards , int numOfGroups){
-      To kano apo ton cardDealer apeytheias
-    }
-    */
-  public static void main(String[] args) {
+  
     
-    CardDealer dealer = new CardDealer();
-    dealer.askingDealer();
-    dealer.readingArrayList();
+  public static void main(String[] args) {
 
-    /*int totalNumOfCards=40;
-    Random random = new Random();
-	  System.out.println("Malaks");
-    int randomNumber = random.nextInt(totalNumOfCards);
-    System.out.println(randomNumber);
-    */
+    input = new Scanner(System.in);
+    System.out.println("Please enter your name : ");
+    player = new Player(input.next());
+    cardDealer = new CardDealer();
+    spasmenoBotaki = new Botaki();
+
+   
+
+
+    cardDealer.askingDealer();
+    cardDealer.readingArrayList();
+
+    while(cardDealer.getNumOfCards() > 0){
+      cardDealer.readingArrayList();
+      if(whoPlayedLast) 
+
+
+
+
+    }
+    
+    
   }
 
 }
