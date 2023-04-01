@@ -1,5 +1,5 @@
 
 
-public class Botaki {
+public class Botaki extends Player {
     
 }

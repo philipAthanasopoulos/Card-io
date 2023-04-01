@@ -10,7 +10,21 @@ public class Player{
         this.score = 0;
     }
 
-    public void play(int cardGroup){
 
+    public String getName() {
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
 }

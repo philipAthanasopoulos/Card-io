@@ -9,13 +9,19 @@ public class Table {
     private static CardDealer cardDealer;
     private static Botaki spasmenoBotaki;  
     private static Scanner input;
-    private boolean whoPlayedLast; // true is for human false is for machine
+    private static boolean whoPlayedLast; // true is for human false is for machine
+    private static String winner;
     
 
 
 
     public Table(){
 
+    }
+
+    public  static void calculateWinner(){
+      if(whoPlayedLast) winner = player.getName();
+      else winner = "AI";
     }
   
     
@@ -35,12 +41,23 @@ public class Table {
 
     while(cardDealer.getNumOfCards() > 0){
       cardDealer.readingArrayList();
-      if(whoPlayedLast) 
+      if(whoPlayedLast) {
+        System.out.println("Choose a group and the number of cards to remove");
+        int group = input.nextInt();
+        int numOfCards = input.nextInt();
+        cardDealer.removeCards(group , numOfCards);
+      }
+      //botaki code
+      else{
+
+      }
 
 
 
 
     }
+    calculateWinner();
+    System.out.println(winner + " has won the game");
     
     
   }
