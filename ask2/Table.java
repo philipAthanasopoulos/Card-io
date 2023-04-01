@@ -1,4 +1,4 @@
-package ask2;
+
 import java.util.Random;
 
 public class Table {
@@ -13,6 +13,9 @@ public class Table {
     */
   public static void main(String[] args) {
     
+    CardDealer dealer = new CardDealer();
+    dealer.askingDealer();
+    dealer.readingArrayList();
 
     /*int totalNumOfCards=40;
     Random random = new Random();

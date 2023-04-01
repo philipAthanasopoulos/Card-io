@@ -1,4 +1,4 @@
-package ask2;
+
 //test comment
 
 public class Player{
