@@ -1,36 +1,18 @@
-
-/*Bullshido:
-import java.security.SecureRandom;
-
-public class RandomIntegerGenerator {
-    public static void main(String[] args) {
-        SecureRandom random = new SecureRandom();
-        int lowerBound = 1; // set the lower bound
-        int upperBound = 100; // set the upper bound
-        int randomInt = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
-        System.out.println(randomInt);
-    }
-}
- */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Random;
-import java.security.SecureRandom;
 import java.util.Collections;
+import java.lang.Math;
 public class CardDealer {
     //Total number of Cards that arent in group. Dealer just shares the cards to groups
     private int totalNumOfCards;
     private int numOfGroups;
     private List<CardGroup> groups = new ArrayList<CardGroup>();
-    //Creating a list that holds each size of Group
-    //Here i declare a randomIndex from Groups's list
     private int randomNumber;
     private int groupSize=0;
     private int remainingCards;
     private int lowerBound=1;
-
+    private Scanner input = new Scanner(System.in);
     /*public CardDealer(){
        
     }
@@ -38,7 +20,6 @@ public class CardDealer {
     public void askingDealer(){
          //Dealer wants to know how many cards and groups are being displayed.
          System.out.println("Please tell me how many cards you want to be played");
-         Scanner input = new Scanner(System.in);
          totalNumOfCards = input.nextInt();
          System.out.println("Tell me how many groups you want");
          numOfGroups = input.nextInt();
@@ -55,7 +36,6 @@ public class CardDealer {
          remainingCards = totalNumOfCards - 2 * numOfGroups;
          int max;
         //System.out.println("Malakas");
-        SecureRandom random = new SecureRandom();
         //If remaining cards are 0, that means that i have groups with exactly 2 cards.
         if(remainingCards == 0){
             for(int i=0; i<numOfGroups; i++){
@@ -80,29 +60,18 @@ public class CardDealer {
                     cardsForGroup = remainingCards;
                 }
                 else{
-                    //System.out.println("Malakas 2");
                     //Here, i choose a number between 0 - remainingCards
-                    //cardsForGroup = random.nextInt(remainingCards);
-                    cardsForGroup = random.nextInt(remainingCards - lowerBound + 1) + lowerBound; 
+                    cardsForGroup =  (int)(Math.random() * remainingCards) + 0;
+                    //cardsForGroup = random.nextInt(remainingCards - lowerBound + 1) + lowerBound; 
                     remainingCards -= cardsForGroup;
                 }
-                //edo ta kano add stin lista ton stoivadon. To 1o stoixeio tha einai i proti
-                //stoivada me ta tade xaraktiristika.
-                //Here i add them to the list of stacks. The first element is the first stack
-                //with these specific characteristics.
+
                 if (remainingCards==0){
-                    //System.out.println("Lene pos eimai trelos");
-                        //maxCardsToRemove.nextInt(upperbound - lowerbound)+ lowerbound)
-                    groups.add(new CardGroup(remainingCards,lowerBound));
-                    //Here i add them to the list of Groups that are Integers
-                    //Groups.add(new CardGroup(remainingCards).getCardsGroup());
+                    groups.add(new CardGroup(0,lowerBound));
                 }
                 else{
-                    //System.out.println("Helllo there");
-                    max = random.nextInt(remainingCards - lowerBound + 1) + lowerBound;
+                    max =  (int)(Math.random() * cardsForGroup) + lowerBound;
                     groups.add(new CardGroup(cardsForGroup, max));
-                    //Here i add them to the list of Groups that are Integers
-                    //Groups.add(new CardGroup(cardsForGroup).getCardsGroup());
                 }
                 
             }
@@ -111,7 +80,27 @@ public class CardDealer {
         Collections.shuffle(groups);
     }
     //END
+    public void humanMove(){
+        System.out.println("From which group would you like to remove cards?");
+        int group = input.nextInt();
+        System.out.println("How many cards would you like to remove?");
+        int numOfCards = input.nextInt();
+        removeCards(group, numOfCards);
 
+    }
+    public void botMove(int group, int numOfCards){
+        removeCards(group,numOfCards);
+    }
+    //Removing cards
+    public void removeCards(int group, int numOfCards){
+        groups.get(group).removeCards(numOfCards);
+        readingArrayList();
+        //I suppose bot doesnt make any mistake
+        if( groups.get(group).removeCards(numOfCards) == false){
+            humanMove();
+        }
+
+    }
     public int getNumOfCards() {
         return this.totalNumOfCards;
     }
@@ -132,35 +121,22 @@ public class CardDealer {
         return this.groupSize;
     }
 
-    /*public List getCardDeck() {
-        return this.cardDeck;
-    }
-
-    public void setCardDeck(List cardDeck) {
-        this.cardDeck = cardDeck;
-    }
-    */
     public void readingArrayList(){
         for(int i=0; i<groupSize; i++){
-            //dimiourgo ena randomIndex gia na grabbaro ena
-            //randomIndex = randomGroups.nextInt(Groups.size());
-
-            /*System.out.print("Group " +i);
-            System.out.print(": ");
-            System.out.print();
-             */
             System.out.print("Group " +i);
             System.out.print(": ");
             System.out.print(groups.get(i).getCardsGroup());
             System.out.print("  Max cards to remove ---> " +groups.get(i).getMaxCardsToRemove());
             System.out.println();
- 
-            // add element in temporary list
-            //newList.add(list.get(randomIndex));
- 
-            // Remove selected element from original list
-
         }
+    }
+    //main
+    public static void main(String[] args){
+        CardDealer cardDealer = new CardDealer();
+        cardDealer.askingDealer();
+        cardDealer.readingArrayList();
+        cardDealer.humanMove();
+
     }
 }
     

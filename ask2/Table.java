@@ -33,21 +33,22 @@ public class Table {
     cardDealer.readingArrayList();
 
     while(cardDealer.getNumOfCards() > 0){
-      cardDealer.readingArrayList();
+      //cardDealer.readingArrayList();
 
 
       if(whoPlayedLast) {
-        spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
-        cardDealer.removeCards(spasmenoBotaki.getGroupToPlay() , spasmenoBotaki.getCardsToRemove());
+        //spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
+        //cardDealer.botMove(spasmenoBotaki.getGroupToPlay() , spasmenoBotaki.getCardsToRemove());
         whoPlayedLast = false;
       }
       
       
       else{
-        System.out.println("Choose a group and the number of cards to remove");
-        int group = input.nextInt();
-        int numOfCards = input.nextInt();
-        cardDealer.removeCards(group , numOfCards);
+        //System.out.println("Choose a group and the number of cards to remove");
+        //int group = input.nextInt();
+        //int numOfCards = input.nextInt();
+        //cardDealer.removeCards(group , numOfCards);
+        cardDealer.humanMove();
         whoPlayedLast = true;
       }
 

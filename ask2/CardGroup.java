@@ -17,8 +17,14 @@ public class CardGroup {
     }
 
     public boolean removeCards(int cardsToRemove){
-        if(cardsToRemove > cardsGroup) return false;
-        if(cardsToRemove > maxCardsToRemove) return false;
+        if(cardsToRemove > cardsGroup) {
+            System.out.println("You have chosen too many cards for removal. Choose something smaller");
+            return false;
+        }
+        if(cardsToRemove > maxCardsToRemove){
+            System.out.println("You have chosen too many cards for removal. Choose something smaller");
+            return false;
+        } 
         else {
             cardsGroup -= cardsToRemove;
             return true;
