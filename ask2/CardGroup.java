@@ -6,11 +6,7 @@ public class CardGroup {
     //private int groupSize;
     private int cardsGroup=2;
     private int maxCardsToRemove;
-    /*public CardGroup(int addedGroupSize , int maxCardsToRemove){
-        this.groupSize += addedGroupSize;
-        this.maxCardsToRemove = maxCardsToRemove;
-    }
-    */
+    
     public CardGroup(int addedGroupSize, int maxCardsToRemove){
         this.cardsGroup += addedGroupSize;
         this.maxCardsToRemove = maxCardsToRemove;

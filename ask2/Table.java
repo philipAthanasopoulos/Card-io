@@ -49,6 +49,7 @@ public class Table {
         //int numOfCards = input.nextInt();
         //cardDealer.removeCards(group , numOfCards);
         cardDealer.humanMove();
+        //cardDealer.botMove(spasmenoBotaki.getGroupToPlay(), spasmenoBotaki.getCardsToRemove());
         whoPlayedLast = true;
       }
 

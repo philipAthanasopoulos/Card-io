@@ -89,6 +89,8 @@ public class CardDealer {
 
     }
     public void botMove(int group, int numOfCards){
+        System.out.print("Group chosen:" +group);
+        System.out.print("Number of cards chosen: " +numOfCards);
         removeCards(group,numOfCards);
     }
     //Removing cards
