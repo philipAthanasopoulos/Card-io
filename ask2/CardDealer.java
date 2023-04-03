@@ -5,14 +5,16 @@ import java.util.Collections;
 import java.lang.Math;
 public class CardDealer {
     //Total number of Cards that arent in group. Dealer just shares the cards to groups
+    private List<CardGroup> groups = new ArrayList<CardGroup>();
     private int totalNumOfCards;
     private int numOfGroups;
-    private List<CardGroup> groups = new ArrayList<CardGroup>();
     private int randomNumber;
     private int groupSize=0;
     private int remainingCards;
     private int lowerBound=1;
+    private int removingCards;
     private Scanner input = new Scanner(System.in);
+
     /*public CardDealer(){
        
     }
@@ -24,6 +26,7 @@ public class CardDealer {
          System.out.println("Tell me how many groups you want");
          numOfGroups = input.nextInt();
          createCardDeck(totalNumOfCards, numOfGroups);
+         CardDeck cardDeck = new CardDeck(totalNumOfCards, numOfGroups);
     }
 
     //Creating Deck 
@@ -35,7 +38,6 @@ public class CardDealer {
         this.groupSize = numOfGroups;
          remainingCards = totalNumOfCards - 2 * numOfGroups;
          int max;
-        //System.out.println("Malakas");
         //If remaining cards are 0, that means that i have groups with exactly 2 cards.
         if(remainingCards == 0){
             for(int i=0; i<numOfGroups; i++){
@@ -62,7 +64,6 @@ public class CardDealer {
                 else{
                     //Here, i choose a number between 0 - remainingCards
                     cardsForGroup =  (int)(Math.random() * remainingCards) + 0;
-                    //cardsForGroup = random.nextInt(remainingCards - lowerBound + 1) + lowerBound; 
                     remainingCards -= cardsForGroup;
                 }
 
@@ -98,11 +99,12 @@ public class CardDealer {
         groups.get(group).removeCards(numOfCards);
         readingArrayList();
         //I suppose bot doesnt make any mistake
-        if( groups.get(group).removeCards(numOfCards) == false){
+        /*if( groups.get(group).removeCards(numOfCards) == false){
             humanMove();
-        }
+        }*/
 
     }
+    
     public int getNumOfCards() {
         return this.totalNumOfCards;
     }
@@ -133,13 +135,14 @@ public class CardDealer {
         }
     }
     //main
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         CardDealer cardDealer = new CardDealer();
         cardDealer.askingDealer();
         cardDealer.readingArrayList();
         cardDealer.humanMove();
 
     }
+    */
 }
     
     

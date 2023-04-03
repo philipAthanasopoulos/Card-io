@@ -5,12 +5,16 @@ import java.util.List;
 
 public class CardDeck {
     private int numOfCards;
-    private List<CardGroup> cardGroups;
+    private int numOfGroups;
+    //private List<CardGroup> cardGroups;
+    private CardDealer dealerObj;
 
     public CardDeck(int numOfCards , int numOfGroups){
         this.numOfCards = numOfCards;
-        this.cardGroups = new ArrayList<CardGroup>();
+        //this.cardGroups = new ArrayList<CardGroup>();
+        this.numOfGroups = numOfGroups;
     }
+    
 
 
 }

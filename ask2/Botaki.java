@@ -10,7 +10,7 @@ public class Botaki extends Player {
 
     
     public void calculateBestMove(CardDeck currentDeck){
-
+        
     }
 
     public int getGroupToPlay() {

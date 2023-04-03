@@ -11,6 +11,7 @@ public class Table {
     private static Scanner input;
     private static boolean whoPlayedLast; // true is for human false is for machine
     private static String winner;
+    private static CardDeck cardDeck;
     
 
 
@@ -28,13 +29,12 @@ public class Table {
     cardDealer = new CardDealer();
     spasmenoBotaki = new Botaki("AI");
 
-
+    //-------------------HERE THE GAME BEGINS----------------------------------------------------
     cardDealer.askingDealer();
     cardDealer.readingArrayList();
 
     while(cardDealer.getNumOfCards() > 0){
       //cardDealer.readingArrayList();
-
 
       if(whoPlayedLast) {
         //spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
@@ -52,7 +52,7 @@ public class Table {
         //cardDealer.botMove(spasmenoBotaki.getGroupToPlay(), spasmenoBotaki.getCardsToRemove());
         whoPlayedLast = true;
       }
-
+      System.out.println("Total cards in the game: " +cardDealer.getNumOfCards());
     }
     calculateWinner();
     System.out.println(winner + " has won the game");
