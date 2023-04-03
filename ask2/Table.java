@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthStyle;
+
 public class Table {
     private static Player player;
     private static CardDealer cardDealer;
@@ -13,6 +15,18 @@ public class Table {
     private static String winner;
     private static CardDeck cardDeck;
     
+
+    public static void printStartScreen(){
+      System.out.println(" ######     ###    ########  ########          ####  #######  ");
+      System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
+      System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
+      System.out.println("##       ##     ## ########  ##     ## #######  ##  ##     ## ");
+      System.out.println("##       ######### ##   ##   ##     ##          ##  ##     ## ");
+      System.out.println("##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
+      System.out.println(" ######  ##     ## ##     ## ########          ####  ####### \n ");
+      
+
+    }
 
 
     public  static void calculateWinner(){
@@ -24,12 +38,14 @@ public class Table {
 
     //init players and keyboard
     input = new Scanner(System.in);
+    printStartScreen();
     System.out.println("Please enter your name : ");
     player = new Player(input.next());
     cardDealer = new CardDealer();
     spasmenoBotaki = new Botaki("AI");
 
     //-------------------HERE THE GAME BEGINS----------------------------------------------------
+    
     cardDealer.askingDealer();
     cardDealer.readingArrayList();
 
