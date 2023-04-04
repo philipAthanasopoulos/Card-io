@@ -46,32 +46,32 @@ public class Table {
 
     //-------------------HERE THE GAME BEGINS----------------------------------------------------
     
-    cardDealer.askingDealer();
-    cardDealer.readingArrayList();
+    cardDealer.requestCardDeck();
+    cardDealer.printCardDeck();
 
-    while(cardDealer.getNumOfCards() > 0){
-      //cardDealer.readingArrayList();
+    // while(cardDealer.cardDeck.getNumOfCards() > 0){
+    //   //cardDealer.readingArrayList();
 
-      if(whoPlayedLast) {
-        //spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
-        //cardDealer.botMove(spasmenoBotaki.getGroupToPlay() , spasmenoBotaki.getCardsToRemove());
-        whoPlayedLast = false;
-      }
+    //   if(whoPlayedLast) {
+    //     //spasmenoBotaki.calculateBestMove(cardDealer.getCardDeck());
+    //     //cardDealer.botMove(spasmenoBotaki.getGroupToPlay() , spasmenoBotaki.getCardsToRemove());
+    //     whoPlayedLast = false;
+    //   }
       
       
-      else{
-        //System.out.println("Choose a group and the number of cards to remove");
-        //int group = input.nextInt();
-        //int numOfCards = input.nextInt();
-        //cardDealer.removeCards(group , numOfCards);
-        cardDealer.humanMove();
-        //cardDealer.botMove(spasmenoBotaki.getGroupToPlay(), spasmenoBotaki.getCardsToRemove());
-        whoPlayedLast = true;
-      }
-      System.out.println("Total cards in the game: " +cardDealer.getNumOfCards());
-    }
-    calculateWinner();
-    System.out.println(winner + " has won the game");
+    //   else{
+    //     System.out.println("Choose a group and the number of cards to remove");
+    //     int group = input.nextInt();
+    //     int numOfCards = input.nextInt();
+    //     cardDealer.removeCards(group , numOfCards);
+    //     cardDealer.humanMove();
+    //     //cardDealer.botMove(spasmenoBotaki.getGroupToPlay(), spasmenoBotaki.getCardsToRemove());
+    //     whoPlayedLast = true;
+    //   }
+    //   System.out.println("Total cards in the game: " +cardDealer.cardDeck.getNumOfCards());
+    // }
+    // calculateWinner();
+    // System.out.println(winner + " has won the game");
     
     
   }

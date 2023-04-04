@@ -6,15 +6,34 @@ import java.util.List;
 public class CardDeck {
     private int numOfCards;
     private int numOfGroups;
-    //private List<CardGroup> cardGroups;
+    List<CardGroup> cardGroups;
     private CardDealer dealerObj;
 
     public CardDeck(int numOfCards , int numOfGroups){
         this.numOfCards = numOfCards;
-        //this.cardGroups = new ArrayList<CardGroup>();
+        this.cardGroups = new ArrayList<CardGroup>(numOfGroups);
+        for(int i = 0 ; i < numOfGroups ; i++){
+            cardGroups.add(new CardGroup(0, 0));
+        }
         this.numOfGroups = numOfGroups;
     }
-    
+
+
+    public int getNumOfCards() {
+        return this.numOfCards;
+    }
+
+    public void setNumOfCards(int numOfCards) {
+        this.numOfCards = numOfCards;
+    }
+
+    public int getNumOfGroups() {
+        return this.numOfGroups;
+    }
+
+    public void setNumOfGroups(int numOfGroups) {
+        this.numOfGroups = numOfGroups;
+    }
 
 
 }
