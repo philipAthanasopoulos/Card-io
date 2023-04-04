@@ -54,8 +54,8 @@ public class CardDealer {
     }
 
     public void printCardDeck(){
+        int i = 1;
         for(CardGroup group : cardDeck.cardGroups){
-            int i = 1;
             System.out.println("Group" + i +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
             i++;
         }
