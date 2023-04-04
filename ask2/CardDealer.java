@@ -40,7 +40,7 @@ public class CardDealer {
             }
         }
         
-        //Create maxCardsToRemove for each group
+        //Set maxCardsToRemove for each group
         for(CardGroup group : cardDeck.cardGroups){
             Random random = new Random();
             int maxCardsToRemove = random.nextInt(group.getNumOfCards());
@@ -66,8 +66,6 @@ public class CardDealer {
         int cardsToRemove = input.nextInt();
         // if user gave invalid inputs , ask again
         if(removeCards(cardsToRemove, groupToRemoveFrom) == false) removeCards(cardsToRemove, groupToRemoveFrom);
-
-
     }
 
     //returns true if user gives valid inputs , false otherwise

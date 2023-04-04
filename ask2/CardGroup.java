@@ -1,7 +1,4 @@
 
-
-import java.util.List;
-
 public class CardGroup {
     private int numOfCards;
     private int maxCardsToRemove;
@@ -32,8 +29,6 @@ public class CardGroup {
     }
 
 
-
-
     public int getMaxCardsToRemove() {
         return this.maxCardsToRemove;
     }
@@ -49,7 +44,5 @@ public class CardGroup {
     public void setNumOfCards(int numOfCards) {
         this.numOfCards = numOfCards;
     }
-
-
 
 }
