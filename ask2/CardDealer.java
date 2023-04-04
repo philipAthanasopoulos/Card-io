@@ -2,7 +2,6 @@
 import java.util.Random;
 import java.util.Scanner;
 public class CardDealer {
-    private int groupSize=0;
     private Scanner input = new Scanner(System.in);
     CardDeck cardDeck;
 
@@ -51,15 +50,11 @@ public class CardDealer {
 
     }
 
-    public int getGroupSize(){
-        return this.groupSize;
-    }
-
-
     public void printCardDeck(){
         for(CardGroup group : cardDeck.cardGroups){
             int i = 1;
-            System.out.println("Group" + i +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + "can be removed each round");
+            System.out.println("Group" + i +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
+            i++;
         }
     }
     
