@@ -10,7 +10,7 @@ public class CardDeck {
 
     public CardDeck(int numOfCards , int numOfGroups){
         this.numOfCards = numOfCards;
-        this.cardGroups = new ArrayList<CardGroup>(numOfGroups);
+        this.cardGroups = new ArrayList<CardGroup>();
         for(int i = 0 ; i < numOfGroups ; i++){
             cardGroups.add(new CardGroup(0, 0));
         }

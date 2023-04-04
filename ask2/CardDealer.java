@@ -6,10 +6,11 @@ public class CardDealer {
     CardDeck cardDeck;
 
     public void requestCardDeck(){
+        int numOfCards , numOfGroups;
         System.out.println("Please give me the number of cards");
-        int numOfCards = input.nextInt();
+        numOfCards = input.nextInt();
         System.out.println("Please give me the number of groups");
-        int numOfGroups = input.nextInt();
+        numOfGroups = input.nextInt();
         createCardDeck(numOfCards,numOfGroups);
     }
 
@@ -22,7 +23,7 @@ public class CardDealer {
 
         cardDeck = new CardDeck(numOfCards, numOfGroups);
         int remainingCards = numOfCards;
-        System.out.println(cardDeck.cardGroups.size());
+        System.out.println("Creating deck of size "+cardDeck.cardGroups.size());
 
         //Initialize all groups with 2 cards
         for(CardGroup group : cardDeck.cardGroups){
@@ -34,7 +35,7 @@ public class CardDealer {
         while(remainingCards > 0){
             for(CardGroup group : cardDeck.cardGroups){
                 Random random = new Random();
-               int cardsToAdd = random.nextInt(remainingCards+1);
+               int cardsToAdd = random.nextInt((remainingCards/numOfGroups) + 2);
                remainingCards -= cardsToAdd;
                group.setNumOfCards(group.getNumOfCards() + cardsToAdd);
             }
@@ -44,7 +45,6 @@ public class CardDealer {
         for(CardGroup group : cardDeck.cardGroups){
             Random random = new Random();
             int maxCardsToRemove = random.nextInt(group.getNumOfCards());
-            if(maxCardsToRemove == 0) maxCardsToRemove = 1; // in case of bad luck
             group.setMaxCardsToRemove(maxCardsToRemove);
         }
 
