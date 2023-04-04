@@ -7,7 +7,6 @@ public class CardDeck {
     private int numOfCards;
     private int numOfGroups;
     List<CardGroup> cardGroups;
-    private CardDealer dealerObj;
 
     public CardDeck(int numOfCards , int numOfGroups){
         this.numOfCards = numOfCards;

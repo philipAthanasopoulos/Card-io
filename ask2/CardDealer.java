@@ -57,6 +57,35 @@ public class CardDealer {
             i++;
         }
     }
+
+    public void askPlayersMove(Player player){
+        System.out.println(player.getName() + " , its your turn");
+        System.out.println("Choose a card group : ");
+        int groupToRemoveFrom = input.nextInt();
+        System.out.println("Choose the number of cards to remove : ");
+        int cardsToRemove = input.nextInt();
+        // if user gave invalid inputs , ask again
+        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) removeCards(cardsToRemove, groupToRemoveFrom);
+
+
+    }
+
+    //returns true if user gives valid inputs , false otherwise
+    public boolean removeCards(int cardsToRemove , int indexOfGroupToRemoveFrom){
+        CardGroup groupToRemoveFrom = cardDeck.cardGroups.get(indexOfGroupToRemoveFrom);
+        if(cardsToRemove > groupToRemoveFrom.getNumOfCards() || cardsToRemove > groupToRemoveFrom.getMaxCardsToRemove()){
+            System.out.println("You cant remove so many cards , try again");
+            return false;
+        }
+        else if(indexOfGroupToRemoveFrom > cardDeck.getNumOfGroups()){
+            System.out.println("The group you typed doesnt exist , try again");
+            return false;
+        }
+
+        groupToRemoveFrom.setNumOfCards(groupToRemoveFrom.getNumOfCards() - cardsToRemove );
+        groupToRemoveFrom.setMaxCardsToRemove(groupToRemoveFrom.getMaxCardsToRemove() - cardsToRemove);
+        return true;
+    }
     
 }
     
