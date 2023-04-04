@@ -7,7 +7,6 @@ public class Table {
     private static Scanner input;
     private static boolean whoPlayedLast; // true is for human false is for machine
     private static String winner;
-    private static CardDeck cardDeck;
     
 
     public static void printStartScreen(){
