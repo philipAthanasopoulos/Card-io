@@ -10,13 +10,18 @@ public class Table {
     
 
     public static void printStartScreen(){
-      System.out.println(" ######     ###    ########  ########          ####  #######  ");
-      System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
-      System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
-      System.out.println("##       ##     ## ########  ##     ## #######  ##  ##     ## ");
-      System.out.println("##       ######### ##   ##   ##     ##          ##  ##     ## ");
-      System.out.println("##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
-      System.out.println(" ######  ##     ## ##     ## ########          ####  ####### \n ");
+
+       final String ANSI_RESET = "\u001B[0m";
+       final String ANSI_GREEN = "\033[0;32m";
+
+
+      System.out.println(ANSI_GREEN + " ######     ###    ########  ########          ####  #######  ");
+      System.out.println(           "##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
+      System.out.println(           "##        ##   ##  ##     ## ##     ##          ##  ##     ##");
+      System.out.println(           "##       ##     ## ########  ##     ## #######  ##  ##     ## ");
+      System.out.println(           "##       ######### ##   ##   ##     ##          ##  ##     ## ");
+      System.out.println(           "##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
+      System.out.println(             " ######  ##     ## ##     ## ########          ####  ####### \n " +  ANSI_RESET);
       
 
     }
