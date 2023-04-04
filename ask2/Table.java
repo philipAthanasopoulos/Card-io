@@ -1,11 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
-
-import javax.swing.plaf.synth.SynthStyle;
-
 public class Table {
     private static Player player;
     private static CardDealer cardDealer;

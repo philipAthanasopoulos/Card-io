@@ -8,7 +8,7 @@ public class CardDealer {
     public void requestCardDeck(){
         System.out.println("Please give me the number of cards");
         int numOfCards = input.nextInt();
-        System.out.println("Please give me the number of cards");
+        System.out.println("Please give me the number of groups");
         int numOfGroups = input.nextInt();
         createCardDeck(numOfCards,numOfGroups);
     }
@@ -73,18 +73,7 @@ public class CardDealer {
     //returns true if user gives valid inputs , false otherwise
     public boolean removeCards(int cardsToRemove , int indexOfGroupToRemoveFrom){
         CardGroup groupToRemoveFrom = cardDeck.cardGroups.get(indexOfGroupToRemoveFrom);
-        if(cardsToRemove > groupToRemoveFrom.getNumOfCards() || cardsToRemove > groupToRemoveFrom.getMaxCardsToRemove()){
-            System.out.println("You cant remove so many cards , try again");
-            return false;
-        }
-        else if(indexOfGroupToRemoveFrom > cardDeck.getNumOfGroups()){
-            System.out.println("The group you typed doesnt exist , try again");
-            return false;
-        }
-
-        groupToRemoveFrom.setNumOfCards(groupToRemoveFrom.getNumOfCards() - cardsToRemove );
-        groupToRemoveFrom.setMaxCardsToRemove(groupToRemoveFrom.getMaxCardsToRemove() - cardsToRemove);
-        return true;
+        return groupToRemoveFrom.removeCards(cardsToRemove);
     }
     
 }

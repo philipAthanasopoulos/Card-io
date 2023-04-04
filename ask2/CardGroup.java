@@ -3,11 +3,8 @@
 import java.util.List;
 
 public class CardGroup {
-    //private int groupSize;
-    private int cardsGroup=2;
-    private int maxCardsToRemove;
-    private int removalCards;
     private int numOfCards;
+    private int maxCardsToRemove;
 
     public CardGroup(int numOfCards, int maxCardsToRemove){
         this.numOfCards = numOfCards;
@@ -15,11 +12,11 @@ public class CardGroup {
     }
 
     public boolean removeCards(int cardsToRemove){
-        if(this.cardsGroup==0){
+        if(numOfCards == 0){
             System.out.println("You cant subtract more cards from this group");
             return false;
         }
-        if(cardsToRemove > cardsGroup) {
+        if(cardsToRemove > numOfCards) {
             System.out.println("You have chosen too many cards for removal. Choose something smaller");
             return false;
         }
@@ -28,40 +25,21 @@ public class CardGroup {
             return false;
         }
         else {
-            cardsGroup -= cardsToRemove;
-            this.removalCards = cardsToRemove;
-            System.out.println("Cards have succesfully removed.");
+            numOfCards -= cardsToRemove;
+            System.out.println("Cards have been succesfully removed.");
             return true;
         }
     }
 
 
-    public int getCardsGroup() {
-        return this.cardsGroup;
-    }
-
-    public void setCardsGroup(int cardsGroup) {
-        this.cardsGroup = cardsGroup;
-    }
 
 
     public int getMaxCardsToRemove() {
         return this.maxCardsToRemove;
     }
-    public int removalCards(){
-        return this.removalCards;
-    }
 
     public void setMaxCardsToRemove(int maxCardsToRemove) {
         this.maxCardsToRemove = maxCardsToRemove;
-    }
-
-    public int getRemovalCards() {
-        return this.removalCards;
-    }
-
-    public void setRemovalCards(int removalCards) {
-        this.removalCards = removalCards;
     }
 
     public int getNumOfCards() {
