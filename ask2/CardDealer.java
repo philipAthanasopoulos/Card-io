@@ -1,4 +1,5 @@
 
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 public class CardDealer {
@@ -47,6 +48,8 @@ public class CardDealer {
             int maxCardsToRemove = random.nextInt(group.getNumOfCards());
             group.setMaxCardsToRemove(maxCardsToRemove);
         }
+        //Completly randomize the groups
+        Collections.shuffle(cardDeck.cardGroups);
 
     }
 
