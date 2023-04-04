@@ -21,7 +21,7 @@ public class Table {
       System.out.println(           "##       ##     ## ########  ##     ## #######  ##  ##     ## ");
       System.out.println(           "##       ######### ##   ##   ##     ##          ##  ##     ## ");
       System.out.println(           "##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
-      System.out.println(             " ######  ##     ## ##     ## ########          ####  ####### \n " +  ANSI_RESET);
+      System.out.println(           " ######  ##     ## ##     ## ########          ####  ####### \n " +  ANSI_RESET);
       
 
     }
