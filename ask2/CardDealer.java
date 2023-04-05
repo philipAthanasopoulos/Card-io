@@ -35,10 +35,13 @@ public class CardDealer {
         //Append random num of cards to each group
         while(remainingCards > 0){
             for(CardGroup group : cardDeck.cardGroups){
-                Random random = new Random();
-               int cardsToAdd = random.nextInt((remainingCards/numOfGroups) + 2);
-               remainingCards -= cardsToAdd;
+               Random random = new Random();
+               int cardsToAdd = random.nextInt(remainingCards + 1) ;
                group.setNumOfCards(group.getNumOfCards() + cardsToAdd);
+               remainingCards -= cardsToAdd;
+               if(remainingCards == 0) break;
+               System.out.println(remainingCards);
+              
             }
         }
         
@@ -54,7 +57,7 @@ public class CardDealer {
     }
 
     public void printCardDeck(){
-        int i = 1;
+        int i = 0;
         for(CardGroup group : cardDeck.cardGroups){
             System.out.println("Group" + i +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
             i++;
@@ -76,6 +79,19 @@ public class CardDealer {
         CardGroup groupToRemoveFrom = cardDeck.cardGroups.get(indexOfGroupToRemoveFrom);
         return groupToRemoveFrom.removeCards(cardsToRemove);
     }
+
+
+    public boolean checkCards( ){
+        for(CardGroup group : cardDeck.cardGroups){
+            if(group.getNumOfCards() == 0 ) cardDeck.cardGroups.remove(group);
+        }
+        if(cardDeck.cardGroups.isEmpty()) {
+            System.out.println("passed");
+            return false;
+        }
+        return true;
+    }
+
     
 }
     

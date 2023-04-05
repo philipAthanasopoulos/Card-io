@@ -14,6 +14,7 @@ public class CardDeck {
         for(int i = 0 ; i < numOfGroups ; i++){
             cardGroups.add(new CardGroup(0, 0));
         }
+        
         this.numOfGroups = numOfGroups;
     }
 
