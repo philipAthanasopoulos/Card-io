@@ -45,7 +45,7 @@ public class CardDealer {
         //Set maxCardsToRemove for each group
         for(CardGroup group : cardDeck.cardGroups){
             Random random = new Random();
-            int maxCardsToRemove = random.nextInt(group.getNumOfCards());
+            int maxCardsToRemove = random.nextInt(group.getNumOfCards()-1) + 1;
             group.setMaxCardsToRemove(maxCardsToRemove);
         }
         //Completly randomize the groups
