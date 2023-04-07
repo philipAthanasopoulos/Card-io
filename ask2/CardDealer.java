@@ -1,7 +1,10 @@
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.swing.event.TreeModelEvent;
 public class CardDealer {
     private Scanner input = new Scanner(System.in);
     CardDeck cardDeck;
@@ -82,11 +85,19 @@ public class CardDealer {
 
 
     public boolean checkCards( ){
+        ArrayList<Integer> indexesToRemove = new ArrayList<Integer>();
+        int index = 0;
+        //find indexes of groups to remove
         for(CardGroup group : cardDeck.cardGroups){
-            if(group.getNumOfCards() == 0 ) cardDeck.cardGroups.remove(group);
+            if(group.getNumOfCards() == 0 ) indexesToRemove.add(index);
+            index++;
+        }
+        //remove them
+        for(Integer indexToRemove : indexesToRemove){
+            CardGroup groupToRemove = cardDeck.cardGroups.get(indexToRemove);
+            cardDeck.cardGroups.remove(groupToRemove);
         }
         if(cardDeck.cardGroups.isEmpty()) {
-            System.out.println("passed");
             return false;
         }
         return true;

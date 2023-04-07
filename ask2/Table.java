@@ -50,6 +50,7 @@ public class Table {
       cardDealer.printCardDeck();
       if(whoPlayedLast) cardDealer.askPlayersMove(spasmenoBotaki);
       else cardDealer.askPlayersMove(player);
+      whoPlayedLast = whoPlayedLast ? false : true;
     }
     calculateWinner();
     System.out.println(winner + " has won the game");
