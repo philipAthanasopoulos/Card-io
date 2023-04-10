@@ -24,8 +24,6 @@ public class Botaki extends Player {
                 root.children.add(new Tree(numOfCardsToRemove));
             }
         }
-
-
         return root;
     }
 
