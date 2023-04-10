@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Botaki extends Player {
     public Botaki(String name) {
@@ -10,7 +12,21 @@ public class Botaki extends Player {
 
     
     public void calculateBestMove(CardDeck currentDeck){
+        Tree tree = createTree(currentDeck);
+        tree.printTree(tree);
         
+    }
+
+    public Tree createTree(CardDeck cardDeck){
+        Tree root = new Tree(0);
+        for(CardGroup group : cardDeck.cardGroups){
+            for(int numOfCardsToRemove = 1 ; numOfCardsToRemove < group.getMaxCardsToRemove() ; numOfCardsToRemove++){
+                root.children.add(new Tree(numOfCardsToRemove));
+            }
+        }
+
+
+        return root;
     }
 
     public int getGroupToPlay() {
@@ -27,6 +43,17 @@ public class Botaki extends Player {
 
     public void setCardsToRemove(int cardsToRemove) {
         this.cardsToRemove = cardsToRemove;
+    }
+
+
+    public static void main(String[] args) {
+        Botaki botaki = new Botaki("AI");
+        CardDealer dealer = new CardDealer();
+        dealer.requestCardDeck();
+        dealer.printCardDeck();
+        botaki.calculateBestMove(dealer.cardDeck);
+        
+
     }
 
 

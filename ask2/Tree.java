@@ -5,10 +5,16 @@ import java.util.Queue;
 
 public class Tree{
     int data;
+    int group;
     List<Tree> children = new LinkedList<>();
 
-    Tree(int data){
+    Tree(int data ){
         this.data = data;
+    }
+
+    Tree(int data , int group){
+        this.data = data;
+        this.group = group;
     }
 
     Tree(int data, List<Tree> children){
@@ -16,7 +22,7 @@ public class Tree{
         this.children = children;
     }
 
-    public static void printTree(Tree root){
+    public void printTree(Tree root){
         if(root == null) return;
         Queue<Tree> queue = new LinkedList<>();
         queue.offer(root);
@@ -36,7 +42,7 @@ public class Tree{
 
 
 
-    public static void main(String[] args) {
+    public  void main(String[] args) {
         Tree root = new Tree(1);
         root.children.add(new Tree(2));
         root.children.add(new Tree(2));
