@@ -1,42 +1,41 @@
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.text.Caret;
 
 public class Botaki extends Player {
-    public Botaki(String name) {
-        super(name);
-    }
 
     private int groupToPlay;
     private int cardsToRemove;
+    
+    public Botaki(String name) {
+        super(name);
+    }
 
     
     public void calculateBestMove(CardDeck currentDeck){
         Tree root = new Tree(0);
         Tree tree = createTree(currentDeck , root);
         tree.printTree(tree);
-        
     }
 
     public Tree createTree(CardDeck cardDeck , Tree root){
+        
+        
         for(CardGroup group : cardDeck.cardGroups){
-            for(int numOfCardsToRemove = 1 ; numOfCardsToRemove < (group.getMaxCardsToRemove() + 1) ; numOfCardsToRemove++){
-                Tree child = new Tree(numOfCardsToRemove);
-                child.data = numOfCardsToRemove;
-                child.group = cardDeck.cardGroups.indexOf(group);
+            int numOfCardsToRemove = 1;
+            while(group.getMaxCardsToRemove() > numOfCardsToRemove) {
+                Tree child = new Tree(numOfCardsToRemove, group.getGroupNumber());
                 root.children.add(child);
-                // copyOfcardDeck.cardGroups.get(cardDeck.cardGroups.indexOf(group)).removeCards(numOfCardsToRemove);
-                // createTree(copyOfcardDeck , child);
+                numOfCardsToRemove++;
             }
         }
-
         for(Tree child : root.children){
-            CardDeck copyOfcardDeck = cardDeck;
-            copyOfcardDeck.cardGroups.get(child.group).removeCards(child.data); 
-            createTree(cardDeck, child); 
+            CardDeck newDeck = cardDeck;
+            newDeck.cardGroups.get(child.group).setNumOfCards(newDeck.cardGroups.get(child.group).getNumOfCards() - child.cardsToRemove);
+            createTree(newDeck, child);
         }
+                                                                                                                  
+
+
+        
         return root;
     }
 
@@ -63,8 +62,6 @@ public class Botaki extends Player {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         botaki.calculateBestMove(dealer.cardDeck);
-        
-
     }
 
 

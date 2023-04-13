@@ -2,6 +2,7 @@
 public class CardGroup {
     private int numOfCards;
     private int maxCardsToRemove;
+    private int groupNumber;
 
     public CardGroup(int numOfCards, int maxCardsToRemove){
         this.numOfCards = numOfCards;
@@ -44,6 +45,14 @@ public class CardGroup {
 
     public void setNumOfCards(int numOfCards) {
         this.numOfCards = numOfCards;
+    }
+
+    public int getGroupNumber() {
+        return this.groupNumber;
+    }
+
+    public void setGroupNumber(int groupNumber) {
+        this.groupNumber = groupNumber;
     }
 
 }

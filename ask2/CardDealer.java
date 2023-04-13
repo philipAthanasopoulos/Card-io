@@ -47,6 +47,12 @@ public class CardDealer {
               
             }
         }
+
+        int groupIndex = 0;
+        for(CardGroup group : cardDeck.cardGroups){
+            group.setGroupNumber(groupIndex);
+            groupIndex++;
+        }
         
         //Set maxCardsToRemove for each group
         for(CardGroup group : cardDeck.cardGroups){
@@ -54,16 +60,11 @@ public class CardDealer {
             int maxCardsToRemove = random.nextInt(group.getNumOfCards()-1) + 1;
             group.setMaxCardsToRemove(maxCardsToRemove);
         }
-        //Completly randomize the groups
-        Collections.shuffle(cardDeck.cardGroups);
-
     }
 
     public void printCardDeck(){
-        int i = 0;
         for(CardGroup group : cardDeck.cardGroups){
-            System.out.println("Group" + i +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
-            i++;
+            System.out.println("Group " + group.getGroupNumber() +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
         }
     }
 

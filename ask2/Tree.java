@@ -4,21 +4,26 @@ import java.util.Queue;
 
 
 public class Tree{
-    int data;
+    int cardsToRemove;
     int group;
     List<Tree> children = new LinkedList<>();
 
-    Tree(int data ){
-        this.data = data;
+
+    Tree(){
+        this.cardsToRemove = 0;
     }
 
-    Tree(int data , int group){
-        this.data = data;
+    Tree(int cardsToRemove ){
+        this.cardsToRemove = cardsToRemove;
+    }
+
+    Tree(int cardsToRemove , int group){
+        this.cardsToRemove = cardsToRemove;
         this.group = group;
     }
 
-    Tree(int data, List<Tree> children){
-        this.data = data;
+    Tree(int cardsToRemove, List<Tree> children){
+        this.cardsToRemove = cardsToRemove;
         this.children = children;
     }
 
@@ -31,13 +36,40 @@ public class Tree{
             int length = queue.size();
             for(int i = 0 ; i < length; i++){
                 Tree node = queue.poll();
-                System.out.print(node.data + " ");
+                System.out.print(node.cardsToRemove + " ");
                 for(Tree item : node.children){
                     queue.offer(item);
                 }
             }
             System.out.println();
         }
+    }
+
+
+
+
+    public int getCardsToRemove() {
+        return this.cardsToRemove;
+    }
+
+    public void setCardsToRemove(int cardsToRemove) {
+        this.cardsToRemove = cardsToRemove;
+    }
+
+    public int getGroup() {
+        return this.group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+    }
+
+    public List<Tree> getChildren() {
+        return this.children;
+    }
+
+    public void setChildren(List<Tree> children) {
+        this.children = children;
     }
 
 
