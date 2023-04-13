@@ -17,21 +17,24 @@ public class Botaki extends Player {
     }
 
     public Tree createTree(CardDeck cardDeck , Tree root){
+        if(cardDeck.cardGroups.size() == 0) return root;
+        cardDeck.cardGroups.get(root.getGroup()).removeCards(root.getCardsToRemove() );
         
         
         for(CardGroup group : cardDeck.cardGroups){
+            if(group.getNumOfCards() == 0 ) continue;
             int numOfCardsToRemove = 1;
-            while(group.getMaxCardsToRemove() > numOfCardsToRemove) {
+            while(group.getMaxCardsToRemove() >= numOfCardsToRemove) {
                 Tree child = new Tree(numOfCardsToRemove, group.getGroupNumber());
                 root.children.add(child);
                 numOfCardsToRemove++;
             }
+            for(Tree child: root.children){
+                CardDeck newCardDeck = cardDeck;
+                createTree(newCardDeck , child);
+            }
         }
-        for(Tree child : root.children){
-            CardDeck newDeck = cardDeck;
-            newDeck.cardGroups.get(child.group).setNumOfCards(newDeck.cardGroups.get(child.group).getNumOfCards() - child.cardsToRemove);
-            createTree(newDeck, child);
-        }
+        
                                                                                                                   
 
 
