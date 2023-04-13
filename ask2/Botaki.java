@@ -29,13 +29,14 @@ public class Botaki extends Player {
                 root.children.add(child);
                 numOfCardsToRemove++;
             }
-            for(Tree child: root.children){
-                CardDeck newCardDeck = cardDeck;
-                createTree(newCardDeck , child);
-            }
         }
         
-                                                                                                                  
+        
+        for(Tree child: root.children){
+            CardDeck newCardDeck = cardDeck;
+            createTree(newCardDeck , child);
+        }
+        
 
 
         
