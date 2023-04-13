@@ -45,6 +45,22 @@ public class Tree{
         }
     }
 
+    public static void printTree2(Tree root) {
+        printTreeHelper(root, "" ,true);
+    }
+    
+    private static void printTreeHelper(Tree node, String prefix, boolean isTail) {
+        System.out.println(prefix + (isTail ? "└── " : "├── ") + node.cardsToRemove);
+        for (int i = 0; i < node.children.size() - 1; i++) {
+            Tree child = node.children.get(i);
+            printTreeHelper(child, prefix + (isTail ? "    " : "│   "), false);
+        }
+        if (node.children.size() > 0) {
+            Tree child = node.children.get(node.children.size() - 1);
+            printTreeHelper(child, prefix + (isTail ? "    " : "│   "), true);
+        }
+    }
+
 
 
 
@@ -74,7 +90,7 @@ public class Tree{
 
 
 
-    public  void main(String[] args) {
+    public static void main(String[] args) {
         Tree root = new Tree(1);
         root.children.add(new Tree(2));
         root.children.add(new Tree(2));
@@ -84,7 +100,7 @@ public class Tree{
         root.children.get(0).children.add(new Tree(3));
 
 
-        printTree(root);
+        printTree2(root);
 
 
         
