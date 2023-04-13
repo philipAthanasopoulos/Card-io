@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.Caret;
+
 public class Botaki extends Player {
     public Botaki(String name) {
         super(name);
@@ -12,17 +14,28 @@ public class Botaki extends Player {
 
     
     public void calculateBestMove(CardDeck currentDeck){
-        Tree tree = createTree(currentDeck);
+        Tree root = new Tree(0);
+        Tree tree = createTree(currentDeck , root);
         tree.printTree(tree);
         
     }
 
-    public Tree createTree(CardDeck cardDeck){
-        Tree root = new Tree(0);
+    public Tree createTree(CardDeck cardDeck , Tree root){
         for(CardGroup group : cardDeck.cardGroups){
-            for(int numOfCardsToRemove = 1 ; numOfCardsToRemove < group.getMaxCardsToRemove() ; numOfCardsToRemove++){
-                root.children.add(new Tree(numOfCardsToRemove));
+            for(int numOfCardsToRemove = 1 ; numOfCardsToRemove < (group.getMaxCardsToRemove() + 1) ; numOfCardsToRemove++){
+                Tree child = new Tree(numOfCardsToRemove);
+                child.data = numOfCardsToRemove;
+                child.group = cardDeck.cardGroups.indexOf(group);
+                root.children.add(child);
+                // copyOfcardDeck.cardGroups.get(cardDeck.cardGroups.indexOf(group)).removeCards(numOfCardsToRemove);
+                // createTree(copyOfcardDeck , child);
             }
+        }
+
+        for(Tree child : root.children){
+            CardDeck copyOfcardDeck = cardDeck;
+            copyOfcardDeck.cardGroups.get(child.group).removeCards(child.data); 
+            createTree(cardDeck, child); 
         }
         return root;
     }

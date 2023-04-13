@@ -22,7 +22,8 @@ public class CardGroup {
             return false;
         }
         else {
-            numOfCards -= cardsToRemove;
+            setNumOfCards(getNumOfCards() - cardsToRemove);
+            if(getNumOfCards() < getMaxCardsToRemove()) setMaxCardsToRemove(getNumOfCards());
             System.out.println("Cards have been succesfully removed.");
             return true;
         }
