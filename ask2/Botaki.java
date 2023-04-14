@@ -17,10 +17,8 @@ public class Botaki extends Player {
     }
 
     public Tree createTree(CardDeck cardDeck , Tree root){
-        if(cardDeck.cardGroups.size() == 0) return root;
-        cardDeck.cardGroups.get(root.getGroup()).removeCards(root.getCardsToRemove() );
         
-        
+        //create all level1 kids of this node
         for(CardGroup group : cardDeck.cardGroups){
             if(group.getNumOfCards() == 0 ) continue;
             int numOfCardsToRemove = 1;
@@ -31,15 +29,13 @@ public class Botaki extends Player {
             }
         }
         
-        
+        //recall the method for each child
         for(Tree child: root.children){
+            if(child.getCardsToRemove() == 0 ) continue;
             CardDeck newCardDeck = cardDeck;
+            newCardDeck.getGroup(child.getGroup()).removeCards(child.cardsToRemove);
             createTree(newCardDeck , child);
         }
-        
-
-
-        
         return root;
     }
 

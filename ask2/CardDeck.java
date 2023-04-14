@@ -20,6 +20,11 @@ public class CardDeck {
 
 
     public int getNumOfCards() {
+        int sum = 0;
+        for(CardGroup group : cardGroups){
+            sum += group.getNumOfCards();
+        }
+        setNumOfCards(sum);
         return this.numOfCards;
     }
 
@@ -33,6 +38,10 @@ public class CardDeck {
 
     public void setNumOfGroups(int numOfGroups) {
         this.numOfGroups = numOfGroups;
+    }
+
+    public CardGroup getGroup(int groupNumber){
+        return cardGroups.get(groupNumber);
     }
 
 
