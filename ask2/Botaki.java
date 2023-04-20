@@ -11,30 +11,15 @@ public class Botaki extends Player {
 
     
     public void calculateBestMove(CardDeck currentDeck){
-        Tree tree = new Tree(0);
-        createTree(currentDeck , tree);
-        tree.printTree2(tree);
+        Node tree = new Node(currentDeck);
+        createTree(tree);
+        tree.printTree(tree);
     }
 
-    public void createTree(CardDeck cardDeck , Tree root){
-        
-        //create all level1 kids of this node
-        for(CardGroup group : cardDeck.cardGroups){
-            if(group.getNumOfCards() == 0 ) continue;
-            int numOfCardsToRemove = 1;
-            while(group.getMaxCardsToRemove() >= numOfCardsToRemove) {
-                Tree child = new Tree(numOfCardsToRemove, group.getGroupNumber()); 
-                root.children.add(child);
-                numOfCardsToRemove++;
-            }
-        }
-        
-        //recall the method for each child
-        for(Tree child: root.children){
-            if(child.getCardsToRemove() == 0 ) continue;
-            CardDeck newCardDeck = cardDeck;
-            newCardDeck.getGroup(child.getGroup()).removeCards(child.cardsToRemove);
-            createTree(newCardDeck , child);
+    public void createTree( Node node){
+        node.createChildren();
+        for(Node child : node.getChildren()){
+            createTree(child);
         }
     }
 

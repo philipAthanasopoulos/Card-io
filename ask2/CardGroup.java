@@ -15,11 +15,11 @@ public class CardGroup {
             return false;
         }
         if(cardsToRemove > numOfCards) {
-            System.out.println("You have chosen too many cards for removal. Choose something smaller");
+            System.out.println("You have chosen too many cards. Choose something smaller");
             return false;
         }
         if(cardsToRemove > maxCardsToRemove){
-            System.out.println("You have chosen too many cards for removal. Choose something smaller");
+            System.out.println("You have chosen too many cards. Choose something smaller");
             return false;
         }
         else {
