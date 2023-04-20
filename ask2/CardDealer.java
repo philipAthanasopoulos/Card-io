@@ -75,13 +75,18 @@ public class CardDealer {
         System.out.println("Choose the number of cards to remove : ");
         int cardsToRemove = input.nextInt();
         // if user gave invalid inputs , ask again
-        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) removeCards(cardsToRemove, groupToRemoveFrom);
+        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);;
     }
 
     //returns true if user gives valid inputs , false otherwise
-    public boolean removeCards(int cardsToRemove , int indexOfGroupToRemoveFrom){
-        CardGroup groupToRemoveFrom = cardDeck.cardGroups.get(indexOfGroupToRemoveFrom);
-        return groupToRemoveFrom.removeCards(cardsToRemove);
+    public boolean removeCards(int cardsToRemove , int groupToRemoveFrom){
+        for(CardGroup group : cardDeck.cardGroups){
+            if(group.getGroupNumber() == groupToRemoveFrom){
+                if(group.removeCards(cardsToRemove) == false) return false;
+                else return true;
+            }
+        }
+        return false;
     }
 
 
