@@ -56,6 +56,7 @@ public class Node {
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , newCardDeck);
                 child.cardDeck.getGroup(this.group).removeCards( cardsToRemove);
                 this.addChild(child);
+                child.createChildren();
                 cardsToRemove++;
             }
         }
