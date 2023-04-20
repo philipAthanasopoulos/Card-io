@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardDeck {
+public class CardDeck{
     private int numOfCards;
     private int numOfGroups;
     List<CardGroup> cardGroups;
@@ -27,6 +27,11 @@ public class CardDeck {
         setNumOfCards(sum);
         return this.numOfCards;
     }
+
+   
+
+    
+    
 
     public void setNumOfCards(int numOfCards) {
         this.numOfCards = numOfCards;

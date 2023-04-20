@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Node {
     private int cardsToRemove;
     private int group;
@@ -49,17 +51,17 @@ public class Node {
 
     public void createChildren(){
         
-        for(CardGroup group : this.cardDeck.cardGroups){
+        for(CardGroup group : getCardDeck().cardGroups){
             int cardsToRemove = 1;
-            while(cardsToRemove <= group.getMaxCardsToRemove()){
-                CardDeck newCardDeck = this.cardDeck;
+            while(group.getMaxCardsToRemove() > cardsToRemove){
+                CardDeck newCardDeck  = new CardDeck(this.getCardDeck().getNumOfCards(), this.getCardDeck().getNumOfGroups());
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , newCardDeck);
-                child.cardDeck.getGroup(this.group).removeCards( cardsToRemove);
+                group.removeCards(cardsToRemove);
                 this.addChild(child);
-                child.createChildren();
                 cardsToRemove++;
             }
         }
+        
     }
 
 
@@ -115,6 +117,10 @@ public class Node {
         Node child12 = new Node(12, 12);
         child2.addChild(child12);
         child2.addChild(child11);
+
+        
+        child4.addChild(child12);
+        child4.addChild(child12);
 
         root.printTree(root );
     }

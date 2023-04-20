@@ -1,5 +1,5 @@
 
-public class CardGroup {
+public class CardGroup{
     private int numOfCards;
     private int maxCardsToRemove;
     private int groupNumber;
@@ -29,6 +29,8 @@ public class CardGroup {
             return true;
         }
     }
+
+    
 
 
     public int getMaxCardsToRemove() {
