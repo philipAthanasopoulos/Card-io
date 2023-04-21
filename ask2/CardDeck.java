@@ -19,12 +19,11 @@ public class CardDeck{
     }
 
     public CardDeck(CardDeck other){
-        // this(another.getNumOfCards(), another.getNumOfGroups() , new ArrayList<CardGroup>(another.getCardGroups()));
 
 
         List<CardGroup> copiedGroups = new ArrayList<>();
         for (CardGroup group : other.getCardGroups()) {
-            CardGroup copiedGroup = new CardGroup(group.getNumOfCards(), group.getMaxCardsToRemove());
+            CardGroup copiedGroup = new CardGroup(group);
             copiedGroups.add(copiedGroup);
         }
 
