@@ -70,7 +70,7 @@ public class CardDeck{
     }
 
 
-    private void setCardGroups(List<CardGroup> cardGroups) {
+    public void setCardGroups(List<CardGroup> cardGroups) {
         this.cardGroups = cardGroups;
     }
 
@@ -82,6 +82,12 @@ public class CardDeck{
     public void removeCards(int cardsToRemove, int group) {
         this.cardGroups.get(group).removeCards(cardsToRemove);
     }
+
+    public void addCards(int cardsToAdd, int group) {
+        this.cardGroups.get(group).addCards(cardsToAdd);
+    }
+
+
 
 
 }

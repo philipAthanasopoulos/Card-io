@@ -1,0 +1,42 @@
+Date : 2023-04-21 13:08:50
+Directory : c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2
+Total : 17 files,  996 codes, 60 comments, 187 blanks, all 1243 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |         16 |        713 |         60 |        187 |        960 |
+| XML      |          1 |        283 |          0 |          0 |        283 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                    |         17 |        996 |         60 |        187 |      1,243 |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                             | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.class     | Java     |         32 |          0 |          0 |         32 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.java      | Java     |         34 |          0 |         16 |         50 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.class | Java     |         47 |          0 |          0 |         47 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.java  | Java     |         85 |          7 |         25 |        117 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDeck.class   | Java     |         33 |          0 |          0 |         33 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDeck.java    | Java     |         55 |          0 |         33 |         88 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardGroup.class  | Java     |         28 |          0 |          0 |         28 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardGroup.java   | Java     |         52 |          0 |         15 |         67 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.class       | Java     |         41 |         11 |          0 |         52 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.java        | Java     |         99 |         18 |         45 |        162 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Player.class     | Java     |         10 |          0 |          0 |         10 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Player.java      | Java     |         12 |          1 |          6 |         19 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.class      | Java     |         37 |          0 |          0 |         37 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.java       | Java     |         40 |          2 |         19 |         61 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Tree.class       | Java     |         28 |         21 |          0 |         49 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Tree.java        | Java     |         80 |          0 |         28 |        108 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\ask2.drawio.svg  | XML      |        283 |          0 |          0 |        283 |
+| Total                                                                |          |        996 |         60 |        187 |      1,243 |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+

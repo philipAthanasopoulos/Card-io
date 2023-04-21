@@ -63,4 +63,8 @@ public class CardGroup{
         this.groupNumber = groupNumber;
     }
 
+    public void addCards(int cardsToAdd){
+        setNumOfCards(getNumOfCards() + cardsToAdd);
+    }
+
 }
