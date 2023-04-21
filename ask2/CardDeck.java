@@ -18,7 +18,25 @@ public class CardDeck{
         this.numOfGroups = numOfGroups;
     }
 
+    public CardDeck(CardDeck another){
+        this(another.getNumOfCards(), another.getNumOfGroups() , new ArrayList<CardGroup>(another.getCardGroups()));
+    }
 
+
+   
+
+    public CardDeck(int numOfCards2, int numOfGroups2, ArrayList<CardGroup> arrayList) {
+        this.numOfCards = numOfCards2;
+        this.numOfGroups = numOfGroups2;
+        this.cardGroups = arrayList;
+    }
+
+    
+
+   
+
+    
+    
     public int getNumOfCards() {
         int sum = 0;
         for(CardGroup group : cardGroups){
@@ -28,18 +46,15 @@ public class CardDeck{
         return this.numOfCards;
     }
 
-   
-
-    
-    
-
     public void setNumOfCards(int numOfCards) {
         this.numOfCards = numOfCards;
     }
+    
 
-    public int getNumOfGroups() {
-        return this.numOfGroups;
+    private int getNumOfGroups() {
+        return 0;
     }
+
 
     public void setNumOfGroups(int numOfGroups) {
         this.numOfGroups = numOfGroups;
@@ -52,6 +67,20 @@ public class CardDeck{
 
     public List<Node> getCardDeck() {
         return null;
+    }
+
+
+    private void setCardGroups(List<CardGroup> cardGroups) {
+        this.cardGroups = cardGroups;
+    }
+
+
+    private List<CardGroup> getCardGroups() {
+        return this.cardGroups;
+    }
+
+    public void removeCards(int cardsToRemove, int group) {
+        this.cardGroups.get(group).removeCards(cardsToRemove);
     }
 
 

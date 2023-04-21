@@ -9,6 +9,12 @@ public class CardGroup{
         this.maxCardsToRemove = maxCardsToRemove;
     }
 
+    public CardGroup(CardGroup another) {
+        this.numOfCards = another.numOfCards;
+        this.maxCardsToRemove = another.maxCardsToRemove;
+        this.groupNumber = another.groupNumber;
+    }
+
     public boolean removeCards(int cardsToRemove){
         if(numOfCards == 0){
             System.out.println("You cant subtract more cards from this group");

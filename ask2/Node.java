@@ -3,11 +3,13 @@ import java.util.List;
 
 
 
+
+
 public class Node {
     private int cardsToRemove;
     private int group;
     private CardDeck cardDeck;
-    private List<Node> children = new ArrayList<Node>();
+    private List<Node> children;
 
     public Node(int cardsToRemove) {
         this.cardsToRemove = cardsToRemove;
@@ -26,6 +28,11 @@ public class Node {
         this.cardsToRemove = cardsToRemove;
         this.group = group;
         this.cardDeck = cardDeck;
+        int size = 0;
+        for(CardGroup cardgroup : cardDeck.cardGroups){
+            size += cardgroup.getMaxCardsToRemove();
+        }
+        children = new ArrayList<Node>(size);
     }
 
     public void addChild(Node child) {
@@ -49,17 +56,29 @@ public class Node {
         }
     }
 
+   
+
+
     public void createChildren(){
+        this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
+        if(!(this.getCardDeck().getNumOfCards() > 0)) {
+            this.addChild(new Node(0));
+            return;
+        };
+        System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
         
-        for(CardGroup group : getCardDeck().cardGroups){
-            int cardsToRemove = 1;
-            while(group.getMaxCardsToRemove() > cardsToRemove){
-                CardDeck newCardDeck  = new CardDeck(this.getCardDeck().getNumOfCards(), this.getCardDeck().getNumOfGroups());
+        for(CardGroup group : this.getCardDeck().cardGroups){
+            if(group.getNumOfCards() == 0 )continue;
+            for(int cardsToRemove = 0 ; group.getMaxCardsToRemove() >= cardsToRemove ; cardsToRemove++){
+                
+                CardDeck newCardDeck = new CardDeck(this.cardDeck);
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , newCardDeck);
-                group.removeCards(cardsToRemove);
                 this.addChild(child);
-                cardsToRemove++;
             }
+        }
+        
+        for(Node child : this.children){
+            child.createChildren();
         }
         
     }
@@ -89,6 +108,10 @@ public class Node {
         this.cardDeck = cardDeck;
     }
 
+    public Node getChild(int index) {
+        return this.children.get(index);
+    }
+
     public List<Node> getChildren() {
         return this.children;
     }
@@ -100,29 +123,39 @@ public class Node {
 
 
     public static void main(String[] args) {
-        Node root = new Node(0);
-        Node child1 = new Node(1, 1);
-        Node child2 = new Node(2, 2);
-        Node child3 = new Node(3, 3);
-        Node child4 = new Node(4, 4);
-        Node child5 = new Node(5, 5);
+        // Node root = new Node(0);
+        // Node child1 = new Node(1, 1);
+        // Node child2 = new Node(2, 2);
+        // Node child3 = new Node(3, 3);
+        // Node child4 = new Node(4, 4);
+        // Node child5 = new Node(5, 5);
 
-        root.addChild(child1);
-        root.addChild(child2);
-        root.addChild(child3);
-        root.addChild(child4);
-        root.addChild(child5);
+        // root.addChild(child1);
+        // root.addChild(child2);
+        // root.addChild(child3);
+        // root.addChild(child4);
+        // root.addChild(child5);
 
-        Node child11 = new Node(11, 11);
-        Node child12 = new Node(12, 12);
-        child2.addChild(child12);
-        child2.addChild(child11);
+        // Node child11 = new Node(11, 11);
+        // Node child12 = new Node(12, 12);
+        // child2.addChild(child12);
+        // child2.addChild(child11);
 
         
-        child4.addChild(child12);
-        child4.addChild(child12);
+        // child4.addChild(child12);
+        // child4.addChild(child12);
 
-        root.printTree(root );
+        // root.printTree(root);
+
+
+        CardDealer dealer = new CardDealer();
+        dealer.requestCardDeck();
+        dealer.printCardDeck();
+        Node tree = new Node(dealer.cardDeck);
+        tree.createChildren();
+        tree.printTree(tree);
+        
+
     }
 
 }

@@ -17,10 +17,7 @@ public class Botaki extends Player {
     }
 
     public void createTree( Node node){
-        node.createChildren();
-        
-        
-        
+        node.createChildren();    
     }
 
     public int getGroupToPlay() {
