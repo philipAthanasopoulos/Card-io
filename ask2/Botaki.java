@@ -13,8 +13,15 @@ public class Botaki extends Player {
     public void calculateBestMove(CardDeck currentDeck){
         Node tree = new Node(currentDeck);
         createTree(tree);
+        findBestMoveWithMinimax(tree);
         tree.printTree(tree);
     }
+
+    private void findBestMoveWithMinimax(Node tree) {
+        
+
+    }
+
 
     public void createTree( Node node){
         node.createChildren();    
