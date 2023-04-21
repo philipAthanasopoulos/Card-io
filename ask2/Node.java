@@ -74,19 +74,17 @@ public class Node {
         
         for(CardGroup group : cardDeck.cardGroups){
             if(group.getNumOfCards() == 0 )continue;
-            for(int cardsToRemove = 1 ; group.getMaxCardsToRemove() >= cardsToRemove ; cardsToRemove++){
-                
-                // CardDeck newCardDeck = new CardDeck(this.cardDeck);
-                Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
+            for(int cardsToRemove = 1 ; !(cardsToRemove > group.getMaxCardsToRemove()) ; cardsToRemove++){
+                Node child = new Node(cardsToRemove, group.getGroupNumber() , this.cardDeck);
                 this.addChild(child);
-            }
-            
+            }       
         }
-        
-        
         for(Node child : this.children){
             child.createChildren();
         }
+        
+        
+        
         
     }
 
