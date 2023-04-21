@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.event.TreeModelEvent;
+import javax.swing.text.StyledEditorKit.BoldAction;
 public class CardDealer {
     private Scanner input = new Scanner(System.in);
     CardDeck cardDeck;
@@ -69,13 +70,21 @@ public class CardDealer {
     }
 
     public void askPlayersMove(Player player){
+        if(player instanceof Botaki){
+            Botaki botaki = (Botaki) player;
+            botaki.calculateBestMove(cardDeck);
+            removeCards(botaki.getCardsToRemove(), botaki.getGroupToPlay()) ;
+            return;   
+        }
+
+        
         System.out.println(player.getName() + " , its your turn");
         System.out.println("Choose a card group : ");
         int groupToRemoveFrom = input.nextInt();
         System.out.println("Choose the number of cards to remove : ");
         int cardsToRemove = input.nextInt();
         // if user gave invalid inputs , ask again
-        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);;
+        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);
     }
 
     //returns true if user gives valid inputs , false otherwise

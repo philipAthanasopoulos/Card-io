@@ -71,12 +71,6 @@ public class Node {
         
     }
 
-    
-    
-    
-   
-
-
     public int getCardsToRemove() {
         return this.cardsToRemove;
     }
