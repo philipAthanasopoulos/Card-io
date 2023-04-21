@@ -18,8 +18,18 @@ public class CardDeck{
         this.numOfGroups = numOfGroups;
     }
 
-    public CardDeck(CardDeck another){
-        this(another.getNumOfCards(), another.getNumOfGroups() , new ArrayList<CardGroup>(another.getCardGroups()));
+    public CardDeck(CardDeck other){
+        // this(another.getNumOfCards(), another.getNumOfGroups() , new ArrayList<CardGroup>(another.getCardGroups()));
+
+
+        List<CardGroup> copiedGroups = new ArrayList<>();
+        for (CardGroup group : other.getCardGroups()) {
+            CardGroup copiedGroup = new CardGroup(group.getNumOfCards(), group.getMaxCardsToRemove());
+            copiedGroups.add(copiedGroup);
+        }
+
+        // Set the new list of CardGroup objects as the property of the new CardDeck object
+        this.setCardGroups(copiedGroups);
     }
 
 

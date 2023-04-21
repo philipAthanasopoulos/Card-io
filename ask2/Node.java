@@ -1,13 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
 public class Node {
     private int cardsToRemove;
-    private int maxCardsToRemove;
     private int group;
     private CardDeck cardDeck;
     private List<Node> children = new ArrayList<Node>() ;
@@ -17,7 +12,7 @@ public class Node {
     }
 
     public Node(CardDeck cardDeck) {
-        this.cardDeck = cardDeck;
+        this.cardDeck = new CardDeck(cardDeck);
     }
 
     public Node(int cardsToRemove, int group) {
@@ -28,12 +23,7 @@ public class Node {
     public Node(int cardsToRemove, int group , CardDeck cardDeck) {
         this.cardsToRemove = cardsToRemove;
         this.group = group;
-        this.cardDeck = cardDeck;
-        this.maxCardsToRemove = cardDeck.cardGroups.get(group).getMaxCardsToRemove();
-        int size = 0;
-        for(CardGroup cardgroup : cardDeck.cardGroups){
-            size += cardgroup.getMaxCardsToRemove();
-        }
+        this.cardDeck = new CardDeck(cardDeck);
     }
 
     public void addChild(Node child) {
@@ -61,31 +51,23 @@ public class Node {
 
 
     public void createChildren(){
-        //print cards before removing
-        
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
         if(this.getCardDeck().getNumOfCards() == 0){
-            System.out.println("No more cards to remove , backtracking");
-            cardDeck.addCards(cardsToRemove, group);
-            cardDeck.cardGroups.get(group).setMaxCardsToRemove(maxCardsToRemove);
+            System.out.println("No more cards to remove");
             return;
         }
+
         System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
         
         for(CardGroup group : cardDeck.cardGroups){
-            if(group.getNumOfCards() == 0 )continue;
             for(int cardsToRemove = 1 ; !(cardsToRemove > group.getMaxCardsToRemove()) ; cardsToRemove++){
-                Node child = new Node(cardsToRemove, group.getGroupNumber() , this.cardDeck);
-                this.addChild(child);
+                Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
+                addChild(child);  
             }       
         }
         for(Node child : this.children){
             child.createChildren();
         }
-        
-        
-        
-        
     }
 
     
@@ -161,11 +143,9 @@ public class Node {
         CardDealer dealer = new CardDealer();
         dealer.requestCardDeck();
         dealer.printCardDeck();
-        Node tree = new Node(dealer.cardDeck);
+        Node tree = new Node(0 ,0 ,dealer.cardDeck);
         tree.createChildren();
         tree.printTree(tree);
-        
-
     }
 
 }
