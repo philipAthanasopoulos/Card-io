@@ -65,15 +65,14 @@ public class Node {
         
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
         if(this.getCardDeck().getNumOfCards() == 0){
-            System.out.println("No more cards to remove");
+            System.out.println("No more cards to remove , backtracking");
             cardDeck.addCards(cardsToRemove, group);
-            //change max cards to remove of the group
             cardDeck.cardGroups.get(group).setMaxCardsToRemove(maxCardsToRemove);
             return;
         }
         System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
         
-        for(CardGroup group : this.getCardDeck().cardGroups){
+        for(CardGroup group : cardDeck.cardGroups){
             if(group.getNumOfCards() == 0 )continue;
             for(int cardsToRemove = 1 ; group.getMaxCardsToRemove() >= cardsToRemove ; cardsToRemove++){
                 
@@ -81,6 +80,7 @@ public class Node {
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
                 this.addChild(child);
             }
+            
         }
         
         
@@ -89,6 +89,11 @@ public class Node {
         }
         
     }
+
+    
+    
+    
+   
 
 
     public int getCardsToRemove() {
