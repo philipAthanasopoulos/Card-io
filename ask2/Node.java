@@ -50,23 +50,27 @@ public class Node {
    
 
 
-    public void createChildren(){
+    public void createChildren(int level){
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
         if(this.getCardDeck().getNumOfCards() == 0){
-            System.out.println("No more cards to remove");
+            // System.out.println("No more cards to remove");
             return;
         }
 
-        System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
+        // System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
         
         
         for(CardGroup group : cardDeck.cardGroups){
             if(group.getNumOfCards() == 0) continue;
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
-                addChild(child); 
-                child.createChildren(); 
+                addChild(child);      
             }       
+        }
+        for(int i = 1 ; i < level ; i++){
+            for(Node child : children){
+                child.createChildren(1);
+            }
         }
         
     }
@@ -117,7 +121,7 @@ public class Node {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
-        tree.createChildren();
+        tree.createChildren(3);
         tree.printTree(tree);
 
     }
