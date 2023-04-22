@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Botaki extends Player {
@@ -14,15 +17,15 @@ public class Botaki extends Player {
         Node tree = new Node(currentDeck);
         createTree(tree);
         findBestMoveWithMinimax(tree);
-        tree.printTree(tree);
+        // tree.printTree(tree);
     }
 
     private void findBestMoveWithMinimax(Node tree) {
         //randomly choose a move
         Random random = new Random();
         //pick a random child node
-        int randomChild = random.nextInt(tree.getChildren().size());
-        Node child = tree.getChildren().get(randomChild);
+        Collections.shuffle(tree.getChildren());
+        Node child = tree.getChildren().get(0);
         setCardsToRemove(child.getCardsToRemove());
         setGroupToPlay(child.getGroup());
 

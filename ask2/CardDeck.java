@@ -3,6 +3,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.GroupLayout.Group;
+
 public class CardDeck{
     private int numOfCards;
     private int numOfGroups;
@@ -89,7 +91,12 @@ public class CardDeck{
     }
 
     public void removeCards(int cardsToRemove, int group) {
-        this.cardGroups.get(group).removeCards(cardsToRemove);
+        for(CardGroup cardGroup : getCardGroups()){
+            if(cardGroup.getGroupNumber() == group){
+                cardGroup.removeCards(cardsToRemove);
+                break;
+            }
+        }
     }
 
     public void addCards(int cardsToAdd, int group) {
