@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+
 
 public class Botaki extends Player {
 
@@ -23,7 +23,7 @@ public class Botaki extends Player {
 
     private void findBestMoveWithMinimax(Node tree) {
         //randomly choose a move
-        Random random = new Random();
+        
         //pick a random child node
         Collections.shuffle(tree.getChildren());
         Node child = tree.getChildren().get(0);
@@ -36,7 +36,8 @@ public class Botaki extends Player {
 
 
     public void createTree( Node node){
-        node.createChildren();    
+        node.createChildren();
+        
     }
 
     public int getGroupToPlay() {
