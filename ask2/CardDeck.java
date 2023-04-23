@@ -3,12 +3,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.GroupLayout.Group;
 
 public class CardDeck{
     private int numOfCards;
     private int numOfGroups;
-    List<CardGroup> cardGroups;
+    private List<CardGroup> cardGroups;
 
     public CardDeck(int numOfCards , int numOfGroups){
         this.numOfCards = numOfCards;
@@ -17,24 +16,19 @@ public class CardDeck{
         for(int i = 0 ; i < numOfGroups ; i++){
             cardGroups.add(new CardGroup(0, 0));
         }
-        
     }
 
+
     public CardDeck(CardDeck other){
-
-
         List<CardGroup> copiedGroups = new ArrayList<>();
         for (CardGroup group : other.getCardGroups()) {
             CardGroup copiedGroup = new CardGroup(group);
             copiedGroups.add(copiedGroup);
         }
-
         // Set the new list of CardGroup objects as the property of the new CardDeck object
         this.setCardGroups(copiedGroups);
     }
 
-
-   
 
     public CardDeck(int numOfCards2, int numOfGroups2, ArrayList<CardGroup> arrayList) {
         this.numOfCards = numOfCards2;
@@ -42,20 +36,14 @@ public class CardDeck{
         this.cardGroups = arrayList;
     }
 
-    
 
-   
-
-    
-    
     public int getNumOfCards() {
         int sum = 0;
-        for(CardGroup group : cardGroups){
-            sum += group.getNumOfCards();
-        }
+        for(CardGroup group : cardGroups) sum += group.getNumOfCards();
         setNumOfCards(sum);
         return this.numOfCards;
     }
+
 
     public void setNumOfCards(int numOfCards) {
         this.numOfCards = numOfCards;
@@ -70,6 +58,7 @@ public class CardDeck{
     public void setNumOfGroups(int numOfGroups) {
         this.numOfGroups = numOfGroups;
     }
+
 
     public CardGroup getGroup(int groupNumber){
         return cardGroups.get(groupNumber);
@@ -86,7 +75,7 @@ public class CardDeck{
     }
 
 
-    private List<CardGroup> getCardGroups() {
+    public List<CardGroup> getCardGroups() {
         return this.cardGroups;
     }
 

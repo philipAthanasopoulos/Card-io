@@ -63,7 +63,7 @@ public class Node {
         // System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
         
         
-        for(CardGroup group : cardDeck.cardGroups){
+        for(CardGroup group : cardDeck.getCardGroups()){
             if(group.getNumOfCards() == 0) continue;
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
