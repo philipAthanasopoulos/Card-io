@@ -7,26 +7,29 @@ public class Botaki extends Player {
 
     private int groupToPlay;
     private int cardsToRemove;
+    private int difficulty;
     
-    public Botaki(String name) {
+    public Botaki(String name , int difficulty) {
         super(name);
+        this.difficulty = difficulty;
     }
 
     
-    public void calculateBestMove(CardDeck currentDeck){
+    public void calculateBestMove(CardDeck currentDeck , int level){
         System.out.println("Calculating best move...");
         Node tree = new Node(currentDeck);
-        createTree(tree);
+        createTree(tree , level);
         findBestMoveWithMinimax(tree);
-        // tree.printTree(tree);
+        tree.printTree(tree);
     }
 
     private void findBestMoveWithMinimax(Node tree) {
         //randomly choose a move
         
         //pick a random child node
-        Collections.shuffle(tree.getChildren());
-        Node child = tree.getChildren().get(0);
+        int randomChild = (int) (Math.random() * tree.getChildren().size());
+        Node child = tree.getChildren().get(randomChild);
+
         setCardsToRemove(child.getCardsToRemove());
         setGroupToPlay(child.getGroup());
 
@@ -35,8 +38,8 @@ public class Botaki extends Player {
     }
 
 
-    public void createTree( Node node){
-        node.createChildren();
+    public void createTree( Node node , int level){
+        node.createChildren(level);
         
     }
 
@@ -56,14 +59,25 @@ public class Botaki extends Player {
         this.cardsToRemove = cardsToRemove;
     }
 
+    public int getDifficulty() {
+        return this.difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
 
     public static void main(String[] args) {
-        Botaki botaki = new Botaki("AI");
+        Botaki botaki = new Botaki("AI" , 2);
         CardDealer dealer = new CardDealer();
+        int maxLevel = 3;
         dealer.requestCardDeck();
         dealer.printCardDeck();
-        botaki.calculateBestMove(dealer.cardDeck);
+        botaki.calculateBestMove(dealer.cardDeck , maxLevel);
     }
+
+
 
 
 }

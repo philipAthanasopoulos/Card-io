@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Node {
     private int cardsToRemove;
     private int group;
     private CardDeck cardDeck;
     private List<Node> children = new ArrayList<Node>();
-    private boolean isComplete;
+    private int nodeLevel;
     
 
     public Node(int cardsToRemove) {
@@ -53,38 +52,24 @@ public class Node {
    
 
 
-    public void createChildren(){
+    public void createChildren(int level){
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
         if(this.getCardDeck().getNumOfCards() == 0){
-            // System.out.println("No more cards to remove");
             return;
         }
-
-        // System.out.println("Creating children for " + this.getCardsToRemove() + " " + this.getGroup());
-        
-        
+        if ( level == 0){
+            return;
+        }
         for(CardGroup group : cardDeck.getCardGroups()){
             if(group.getNumOfCards() == 0) continue;
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
-                addChild(child);    
-                child.createChildren(); 
+                addChild(child); 
+                child.createChildren(level -1 ); 
             }       
         }
     }
-    
 
-    
-
-    // public void createChildrenDFS(CardDeck cardDeck){
-    //     int group = this.getGroup();
-    //     if(cardDeck.getGroup(group).getNumOfCards() == 0) {
-    //         cardDeck.addCards(this.getCardsToRemove(), group);
-    //         return;
-    //     }
-    //     else
-
-    // }
 
     
 
@@ -125,17 +110,17 @@ public class Node {
     }
 
 
-    public boolean isIsComplete() {
-        return this.isComplete;
+    public int getNodeLevel() {
+        return this.nodeLevel;
     }
 
-    public boolean getIsComplete() {
-        return this.isComplete;
+    public void setNodeLevel(int nodeLevel) {
+        this.nodeLevel = nodeLevel;
     }
 
-    public void setIsComplete(boolean isComplete) {
-        this.isComplete = isComplete;
-    }
+
+
+
 
 
 
@@ -148,7 +133,7 @@ public class Node {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
-        tree.createChildren();
+        tree.createChildren(1);
         tree.printTree(tree);
 
     }

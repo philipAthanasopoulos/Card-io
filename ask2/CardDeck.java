@@ -93,6 +93,17 @@ public class CardDeck{
     }
 
 
+	public CardDeck copy() {
+        ArrayList<CardGroup> copiedGroups = new ArrayList<>();
+        for (CardGroup group : this.getCardGroups()) {
+            CardGroup copiedGroup = new CardGroup(group);
+            copiedGroups.add(copiedGroup);
+        }
+        // Set the new list of CardGroup objects as the property of the new CardDeck object
+        return new CardDeck(this.getNumOfCards(), this.getNumOfGroups(), copiedGroups);
+	}
+
+
 
 
 }
