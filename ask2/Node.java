@@ -32,23 +32,6 @@ public class Node {
         children.add(child);
     }
 
-    
-    // public static void printTree(Node root) {
-    //     printTreeHelper(root, "" ,true);
-    // }
-    
-    // public static void printTreeHelper(Node node, String prefix, boolean isTail) {
-    //     System.out.println(prefix + (isTail ? "└── " : "├── ") + node.cardsToRemove);
-    //     for (int i = 0; i < node.children.size() - 1; i++) {
-    //         Node child = node.children.get(i);
-    //         printTreeHelper(child, prefix + (isTail ? "    " : "│   "), false);
-    //     }
-    //     if (node.children.size() > 0) {
-    //         Node child = node.children.get(node.children.size() - 1);
-    //         printTreeHelper(child, prefix + (isTail ? "    " : "│   "), true);
-    //     }
-    // }
-
     public  void printTree() {
         printTreeHelper( "" ,true);
     }
@@ -64,8 +47,6 @@ public class Node {
             child.printTreeHelper( prefix + (isTail ? "    " : "│   "), true);
         }
     }
-
-
 
     public void createChildren(int level){
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
@@ -84,9 +65,6 @@ public class Node {
             }       
         }
     }
-
-
-    
 
     public int getCardsToRemove() {
         return this.cardsToRemove;
@@ -124,7 +102,6 @@ public class Node {
         this.children = children;
     }
 
-
     public int getNodeLevel() {
         return this.nodeLevel;
     }
@@ -134,16 +111,7 @@ public class Node {
     }
 
 
-
-
-
-
-
-
     public static void main(String[] args) {
-        
-
-
         CardDealer dealer = new CardDealer();
         dealer.requestCardDeck();
         dealer.printCardDeck();

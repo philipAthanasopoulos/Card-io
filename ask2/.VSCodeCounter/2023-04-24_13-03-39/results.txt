@@ -1,0 +1,40 @@
+Date : 2023-04-24 13:03:39
+Directory : c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2
+Total : 15 files,  957 codes, 44 comments, 162 blanks, all 1163 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |         14 |        674 |         44 |        162 |        880 |
+| XML      |          1 |        283 |          0 |          0 |        283 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                    |         15 |        957 |         44 |        162 |      1,163 |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                             | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.class     | Java     |         33 |          0 |          0 |         33 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.java      | Java     |         51 |          2 |         28 |         81 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.class | Java     |         54 |          0 |          0 |         54 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.java  | Java     |         94 |          7 |         29 |        130 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDeck.class   | Java     |         38 |          0 |          0 |         38 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDeck.java    | Java     |         74 |          2 |         34 |        110 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardGroup.class  | Java     |         30 |          0 |          0 |         30 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardGroup.java   | Java     |         54 |          1 |         16 |         71 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.class       | Java     |         47 |         15 |          0 |         62 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.java        | Java     |         99 |         14 |         29 |        142 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Player.class     | Java     |         10 |          0 |          0 |         10 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Player.java      | Java     |         12 |          1 |          6 |         19 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.class      | Java     |         37 |          0 |          0 |         37 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.java       | Java     |         41 |          2 |         20 |         63 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\ask2.drawio.svg  | XML      |        283 |          0 |          0 |        283 |
+| Total                                                                |          |        957 |         44 |        162 |      1,163 |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
