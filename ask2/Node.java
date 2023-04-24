@@ -33,23 +33,38 @@ public class Node {
     }
 
     
-    public static void printTree(Node root) {
-        printTreeHelper(root, "" ,true);
+    // public static void printTree(Node root) {
+    //     printTreeHelper(root, "" ,true);
+    // }
+    
+    // public static void printTreeHelper(Node node, String prefix, boolean isTail) {
+    //     System.out.println(prefix + (isTail ? "└── " : "├── ") + node.cardsToRemove);
+    //     for (int i = 0; i < node.children.size() - 1; i++) {
+    //         Node child = node.children.get(i);
+    //         printTreeHelper(child, prefix + (isTail ? "    " : "│   "), false);
+    //     }
+    //     if (node.children.size() > 0) {
+    //         Node child = node.children.get(node.children.size() - 1);
+    //         printTreeHelper(child, prefix + (isTail ? "    " : "│   "), true);
+    //     }
+    // }
+
+    public  void printTree() {
+        printTreeHelper( "" ,true);
     }
     
-    public static void printTreeHelper(Node node, String prefix, boolean isTail) {
-        System.out.println(prefix + (isTail ? "└── " : "├── ") + node.cardsToRemove);
-        for (int i = 0; i < node.children.size() - 1; i++) {
-            Node child = node.children.get(i);
-            printTreeHelper(child, prefix + (isTail ? "    " : "│   "), false);
+    public  void printTreeHelper( String prefix, boolean isTail) {
+        System.out.println(prefix + (isTail ? "└── " : "├── ") + this.cardsToRemove);
+        for (int i = 0; i < this.children.size() - 1; i++) {
+            Node child = this.children.get(i);
+            child.printTreeHelper( prefix + (isTail ? "    " : "│   "), false);
         }
-        if (node.children.size() > 0) {
-            Node child = node.children.get(node.children.size() - 1);
-            printTreeHelper(child, prefix + (isTail ? "    " : "│   "), true);
+        if (this.children.size() > 0) {
+            Node child = this.children.get(this.children.size() - 1);
+            child.printTreeHelper( prefix + (isTail ? "    " : "│   "), true);
         }
     }
 
-   
 
 
     public void createChildren(int level){
@@ -133,8 +148,8 @@ public class Node {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
-        tree.createChildren(1);
-        tree.printTree(tree);
+        tree.createChildren(20);
+        tree.printTree();
 
     }
 
