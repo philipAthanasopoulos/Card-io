@@ -7,12 +7,14 @@ public class Table {
     private static Scanner input;
     private static boolean whoPlayedLast; // true is for human false is for machine
     private static String winner;
+    final static String ANSI_RESET = "\u001B[0m";
+    final static String ANSI_GREEN = "\033[0;32m";
+    final static String ANSI_YELLOW = "\033[33m";
+    final static String ANSI_RED = "\033[31m";
     
 
     public static void printStartScreen(){
 
-       final String ANSI_RESET = "\u001B[0m";
-       final String ANSI_GREEN = "\033[0;32m";
 
 
       System.out.println(ANSI_GREEN + " ######     ###    ########  ########          ####  #######  ");
@@ -39,7 +41,7 @@ public class Table {
     printStartScreen();
     System.out.println("Please enter your name : ");
     player = new Player(input.next());
-    System.out.println("Please choose AI difficulty : 1)Easy 2)Medium 3)Hard");
+    System.out.println("Please choose AI difficulty :" + ANSI_GREEN+" 1)Easy"+ ANSI_YELLOW + " 2)Medium" +ANSI_RED+" 3)Hard" + ANSI_RESET);
     spasmenoBotaki = new Botaki("AI" , input.nextInt());
     
     cardDealer = new CardDealer();
