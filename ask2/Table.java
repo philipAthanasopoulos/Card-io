@@ -16,14 +16,15 @@ public class Table {
     public static void printStartScreen(){
 
 
-
-      System.out.println(ANSI_GREEN + " ######     ###    ########  ########          ####  #######  ");
-      System.out.println(           "##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
-      System.out.println(           "##        ##   ##  ##     ## ##     ##          ##  ##     ##");
-      System.out.println(           "##       ##     ## ########  ##     ## #######  ##  ##     ## ");
-      System.out.println(           "##       ######### ##   ##   ##     ##          ##  ##     ## ");
-      System.out.println(           "##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
-      System.out.println(           " ######  ##     ## ##     ## ########          ####  ####### \n " +  ANSI_RESET);
+      System.out.println(ANSI_GREEN);
+      System.out.println(" ######     ###    ########  ########          ####  #######  ");
+      System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
+      System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
+      System.out.println("##       ##     ## ########  ##     ## #######  ##  ##     ## ");
+      System.out.println("##       ######### ##   ##   ##     ##          ##  ##     ## ");
+      System.out.println("##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
+      System.out.println(" ######  ##     ## ##     ## ########          ####  ####### \n ");
+      System.out.println(ANSI_RESET);
       
 
     }
