@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Node {
     private int cardsToRemove;
-    private int group;
+    private int groupToPlay;
     private CardDeck cardDeck;
     private List<Node> children = new ArrayList<Node>();
     private int nodeLevel;
@@ -19,12 +19,12 @@ public class Node {
 
     public Node(int cardsToRemove, int group) {
         this.cardsToRemove = cardsToRemove;
-        this.group = group;
+        this.groupToPlay = group;
     }
 
     public Node(int cardsToRemove, int group , CardDeck cardDeck) {
         this.cardsToRemove = cardsToRemove;
-        this.group = group;
+        this.groupToPlay = group;
         this.cardDeck = new CardDeck(cardDeck);
     }
 
@@ -75,11 +75,11 @@ public class Node {
     }
 
     public int getGroup() {
-        return this.group;
+        return this.groupToPlay;
     }
 
     public void setGroup(int group) {
-        this.group = group;
+        this.groupToPlay = group;
     }
 
     public CardDeck getCardDeck() {
