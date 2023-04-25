@@ -7,7 +7,8 @@ public class Node {
     private CardDeck cardDeck;
     private List<Node> children = new ArrayList<Node>();
     private int nodeLevel;
-    
+    private boolean isMaximizingPlayer = true;    
+    private int value = 0;
 
     public Node(int cardsToRemove) {
         this.cardsToRemove = cardsToRemove;
@@ -37,7 +38,9 @@ public class Node {
     }
     
     public  void printTreeHelper( String prefix, boolean isTail) {
-        System.out.println(prefix + (isTail ? "└── " : "├── ") + this.cardsToRemove);
+        String maxOrMin = this.isMaximizingPlayer ? "MAX" : "MIN";
+        
+        System.out.println(prefix + (isTail ? "└── " : "├── ") + this.cardsToRemove + maxOrMin + this.getValue());
         for (int i = 0; i < this.children.size() - 1; i++) {
             Node child = this.children.get(i);
             child.printTreeHelper( prefix + (isTail ? "    " : "│   "), false);
@@ -48,22 +51,30 @@ public class Node {
         }
     }
 
-    public void createChildren(int level){
+    public void createChildren(int maxLevel , int currentLevel){
+
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
-        if(this.getCardDeck().getNumOfCards() == 0){
+        if(this.getCardDeck().getNumOfCards() == 0 ||  (maxLevel == currentLevel)){
+            this.setValue(this.isMaximizingPlayer() ? 1 : -1);
             return;
         }
-        if ( level == 0){
-            return;
-        }
+        
         for(CardGroup group : cardDeck.getCardGroups()){
             if(group.getNumOfCards() == 0) continue;
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
+
+                if(currentLevel%2 == 0) child.setIsMaximizingPlayer(true);
+                else child.setIsMaximizingPlayer(false);
+
                 addChild(child); 
-                child.createChildren(level -1 ); 
+                child.createChildren(maxLevel , currentLevel + 1); 
             }       
         }
+    }
+
+    public boolean isodd(int num){
+        return num % 2 == 0;
     }
 
     public int getCardsToRemove() {
@@ -110,13 +121,29 @@ public class Node {
         this.nodeLevel = nodeLevel;
     }
 
+    public boolean isMaximizingPlayer() {
+        return this.isMaximizingPlayer;
+    }
+
+    public void setIsMaximizingPlayer(boolean isMaximizingPlayer) {
+        this.isMaximizingPlayer = isMaximizingPlayer;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
 
     public static void main(String[] args) {
         CardDealer dealer = new CardDealer();
         dealer.requestCardDeck();
         dealer.printCardDeck();
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
-        tree.createChildren(20);
+        tree.createChildren(20 , 1);
         tree.printTree();
 
     }
