@@ -73,6 +73,8 @@ public class Node {
         }
     }
 
+    
+
     public boolean isodd(int num){
         return num % 2 == 0;
     }
@@ -145,6 +147,8 @@ public class Node {
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
         tree.createChildren(20 , 1);
         tree.printTree();
+
+        
 
     }
 

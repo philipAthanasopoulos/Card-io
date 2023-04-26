@@ -70,7 +70,7 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        int res = Integer.MIN_VALUE;
+        //int res = Integer.MIN_VALUE;
         for(int number : values){
             if(number > res) res = number;
         }
