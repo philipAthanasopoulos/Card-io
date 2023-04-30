@@ -7,9 +7,8 @@ public class Botaki extends Player {
     private int cardsToRemove;
     private int difficulty;
     
-    public Botaki(String name , int difficulty) {
+    public Botaki(String name ) {
         super(name);
-        this.difficulty = difficulty;
     }
 
     

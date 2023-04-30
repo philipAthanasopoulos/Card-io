@@ -42,8 +42,7 @@ public class Table {
     printStartScreen();
     System.out.println("Please enter your name : ");
     player = new Player(input.next());
-    System.out.println("Please choose AI difficulty :" + ANSI_GREEN+" 1)Easy"+ ANSI_YELLOW + " 2)Medium" +ANSI_RED+" 3)Hard" + ANSI_RESET);
-    spasmenoBotaki = new Botaki("AI" , input.nextInt());
+    spasmenoBotaki = new Botaki("AI");
     
     cardDealer = new CardDealer();
 
