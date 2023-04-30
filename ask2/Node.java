@@ -55,8 +55,9 @@ public class Node {
 
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
         this.isMaximizingPlayer = maxOrMin.equals("MAX") ? true : false;
+
         if(this.getCardDeck().getNumOfCards() == 0 ){
-            this.setValue(this.isMaximizingPlayer() ? 1 : -1);
+            this.setValue(this.isMaximizingPlayer() ? -1 : 1);
             return;
         }
         

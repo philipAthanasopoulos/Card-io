@@ -30,24 +30,14 @@ public class Botaki extends Player {
     }
 
     private void findBestMoveWithMinimax(Node tree) {
-        //randomly choose a move
-
-        
-        
-
-        
-        // //pick a random child node
-        // int randomChild = (int) (Math.random() * tree.getChildren().size());
-        // Node child = tree.getChildren().get(randomChild);
-
         
         
         List<Integer> values = new ArrayList<Integer>();
         for(Node child : tree.getChildren()){
-            if(!child.getChildren().isEmpty()) findBestMoveWithMinimax(child);
-            values.add(child.getValue());
+            if(child.getChildren().isEmpty()) values.add(child.getValue());
+            else findBestMoveWithMinimax(child);
         }
-        
+        // System.out.println("Values are: " + values);
         if(tree.isMaximizingPlayer()) tree.setValue(getMaxValue(values));
         else tree.setValue(getMinValue(values));
         System.out.println(tree.isMaximizingPlayer() ? "Was looking for MAX" : "Was looking for MIN" );
@@ -59,7 +49,7 @@ public class Botaki extends Player {
 
 
     private int getMinValue(List<Integer> values) {
-        int res = Integer.MAX_VALUE;
+        int res = 0;
         for(int number : values){
             if(number < res) res = number;
         }
@@ -69,7 +59,7 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        int res = Integer.MIN_VALUE;
+        int res = 0;
         for(int number : values){
             if(number > res) res = number;
         }
