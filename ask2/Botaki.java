@@ -15,7 +15,7 @@ public class Botaki extends Player {
     public void calculateBestMove(CardDeck currentDeck , int level){
         System.out.println("Calculating best move...");
         Node tree = new Node(currentDeck);
-        createTree(tree , level);
+        createTree(tree);
         tree.printTree();
         findBestMoveWithMinimax(tree);
         tree.printTree();
@@ -69,7 +69,7 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        //int res = Integer.MIN_VALUE;
+        int res = Integer.MIN_VALUE;
         for(int number : values){
             if(number > res) res = number;
         }
@@ -77,9 +77,8 @@ public class Botaki extends Player {
     }
 
 
-    public void createTree( Node node , int level){
-        node.createChildren( 1 , level);
-        
+    public void createTree( Node node){
+        node.createChildren("MAX");
     }
 
     public int getGroupToPlay() {
@@ -108,7 +107,7 @@ public class Botaki extends Player {
 
 
     public static void main(String[] args) {
-        Botaki botaki = new Botaki("AI" , 2);
+        Botaki botaki = new Botaki("AI");
         CardDealer dealer = new CardDealer();
         int maxLevel = 3;
         dealer.requestCardDeck();
