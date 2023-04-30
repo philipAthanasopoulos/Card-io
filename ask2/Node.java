@@ -51,10 +51,11 @@ public class Node {
         }
     }
 
-    public void createChildren(int maxLevel , int currentLevel){
+    public void createChildren(String maxOrMin){
 
         this.cardDeck.removeCards(this.getCardsToRemove(), this.getGroup());
-        if(this.getCardDeck().getNumOfCards() == 0 ||  (maxLevel == currentLevel)){
+        this.isMaximizingPlayer = maxOrMin.equals("MAX") ? true : false;
+        if(this.getCardDeck().getNumOfCards() == 0 ){
             this.setValue(this.isMaximizingPlayer() ? 1 : -1);
             return;
         }
@@ -64,11 +65,11 @@ public class Node {
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
 
-                if(currentLevel%2 == 0) child.setIsMaximizingPlayer(true);
-                else child.setIsMaximizingPlayer(false);
+                // if(currentLevel%2 == 0) child.setIsMaximizingPlayer(true);
+                // else child.setIsMaximizingPlayer(false);
 
                 addChild(child); 
-                child.createChildren(maxLevel , currentLevel + 1); 
+                child.createChildren(maxOrMin.equals("MAX") ? "MIN" : "MAX"); 
             }       
         }
     }
@@ -145,7 +146,7 @@ public class Node {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         Node tree = new Node(0 ,0 ,new CardDeck(dealer.cardDeck));
-        tree.createChildren(20 , 1);
+        tree.createChildren("MAX");
         tree.printTree();
 
         
