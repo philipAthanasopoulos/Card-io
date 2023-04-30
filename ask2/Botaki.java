@@ -36,8 +36,9 @@ public class Botaki extends Player {
         
         List<Integer> values = new ArrayList<Integer>();
         for(Node child : tree.getChildren()){
-            if(child.getChildren().isEmpty()) values.add(child.getValue());
-            else findBestMoveWithMinimax(child);
+            if(!child.getChildren().isEmpty())  findBestMoveWithMinimax(child);
+            
+            values.add(child.getValue());
         }
         // System.out.println("Values are: " + values);
         if(tree.isMaximizingPlayer()) tree.setValue(getMaxValue(values));
@@ -48,7 +49,8 @@ public class Botaki extends Player {
 
 
     private int getMinValue(List<Integer> values) {
-        int res = Integer.MAX_VALUE;
+        int res = 10000;
+        System.out.println(values.toString());
         for(int number : values){
             if(number < res) res = number;
         }
@@ -58,12 +60,15 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        int res = Integer.MIN_VALUE;
+        int res = -10000;
+        System.out.println(values.toString());
         for(int number : values){
             if(number > res) res = number;
         }
         return res;
     }
+
+
 
 
     public void createTree( Node node){
