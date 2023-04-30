@@ -5,27 +5,29 @@ public class Botaki extends Player {
 
     private int groupToPlay;
     private int cardsToRemove;
-    private int difficulty;
+    
     
     public Botaki(String name ) {
         super(name);
     }
 
     
-    public void calculateBestMove(CardDeck currentDeck , int level){
+    public void calculateBestMove(CardDeck currentDeck){
         System.out.println("Calculating best move...");
         Node tree = new Node(currentDeck);
         createTree(tree);
         tree.printTree();
         findBestMoveWithMinimax(tree);
         tree.printTree();
-        Node nextMove  = new Node(level, level, currentDeck);
+        Node nextMove  = new Node(currentDeck);
         for(Node child : tree.getChildren()){
             if(child.getValue() == tree.getValue()){
                 nextMove = child;
                 break;
             }
         }
+        this.setCardsToRemove(nextMove.getCardsToRemove());
+        this.setGroupToPlay(nextMove.getGroup());
         System.out.println("Best move is: " + nextMove.getCardsToRemove() + " " + nextMove.getGroup() + " " + nextMove.getValue());
     }
 
@@ -42,14 +44,11 @@ public class Botaki extends Player {
         else tree.setValue(getMinValue(values));
         System.out.println(tree.isMaximizingPlayer() ? "Was looking for MAX" : "Was looking for MIN" );
         System.out.println("Best move is: " + tree.getCardsToRemove() + " " + tree.getGroup() + " " + tree.getValue());
-
-        
-
     }
 
 
     private int getMinValue(List<Integer> values) {
-        int res = 0;
+        int res = Integer.MAX_VALUE;
         for(int number : values){
             if(number < res) res = number;
         }
@@ -59,7 +58,7 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        int res = 0;
+        int res = Integer.MIN_VALUE;
         for(int number : values){
             if(number > res) res = number;
         }
@@ -87,22 +86,15 @@ public class Botaki extends Player {
         this.cardsToRemove = cardsToRemove;
     }
 
-    public int getDifficulty() {
-        return this.difficulty;
-    }
-
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
+    
 
 
     public static void main(String[] args) {
         Botaki botaki = new Botaki("AI");
         CardDealer dealer = new CardDealer();
-        int maxLevel = 3;
         dealer.requestCardDeck();
         dealer.printCardDeck();
-        botaki.calculateBestMove(dealer.cardDeck , maxLevel);
+        botaki.calculateBestMove(dealer.cardDeck);
     }
 
 
