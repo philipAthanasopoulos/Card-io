@@ -6,7 +6,6 @@ public class Node {
     private int groupToPlay;
     private CardDeck cardDeck;
     private List<Node> children = new ArrayList<Node>();
-    private int nodeLevel;
     private boolean isMaximizingPlayer = true;    
     private int value = 0;
 
@@ -117,13 +116,7 @@ public class Node {
         this.children = children;
     }
 
-    public int getNodeLevel() {
-        return this.nodeLevel;
-    }
-
-    public void setNodeLevel(int nodeLevel) {
-        this.nodeLevel = nodeLevel;
-    }
+   
 
     public boolean isMaximizingPlayer() {
         return this.isMaximizingPlayer;

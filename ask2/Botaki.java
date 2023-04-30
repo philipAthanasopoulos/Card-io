@@ -43,8 +43,8 @@ public class Botaki extends Player {
         // System.out.println("Values are: " + values);
         if(tree.isMaximizingPlayer()) tree.setValue(getMaxValue(values));
         else tree.setValue(getMinValue(values));
-        System.out.println(tree.isMaximizingPlayer() ? "Was looking for MAX" : "Was looking for MIN" );
-        System.out.println("Best move is: " + tree.getCardsToRemove() + " " + tree.getGroup() + " " + tree.getValue());
+        // System.out.println(tree.isMaximizingPlayer() ? "Was looking for MAX" : "Was looking for MIN" );
+        // System.out.println("Best move is: " + tree.getCardsToRemove() + " " + tree.getGroup() + " " + tree.getValue());
     }
 
 

@@ -1,22 +1,34 @@
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class CardDealer {
-    private Scanner input = new Scanner(System.in);
+    private Scanner input;
     CardDeck cardDeck;
     final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RED = "\033[0;31m";
     final String ANSI_YELLOW = "\033[0;33m";
 
 
-    public void requestCardDeck(){
+    public void requestCardDeck() {
         int numOfCards , numOfGroups;
-        System.out.println("Please give me the number of cards");
-        numOfCards = input.nextInt();
-        System.out.println("Please give me the number of groups");
-        numOfGroups = input.nextInt();
-        createCardDeck(numOfCards,numOfGroups);
+        input = new Scanner(System.in);
+
+        try {
+            System.out.println("Please give me the number of cards");
+            numOfCards = input.nextInt();
+            System.out.println("Please give me the number of groups");
+            numOfGroups = input.nextInt();
+            createCardDeck(numOfCards,numOfGroups);
+        } catch (NullPointerException  | NumberFormatException | InputMismatchException e) {
+            // TODO: handle exception
+            System.out.println(ANSI_RED + "You entered invalid card deck numbers" + ANSI_RESET);
+            requestCardDeck();
+        }
+        
+        
     }
 
     
@@ -24,11 +36,13 @@ public class CardDealer {
     public void createCardDeck(int numOfCards , int numOfGroups){
 
 
-        if(numOfCards < numOfGroups*2) requestCardDeck(); // Deck impossible to create , ask again
+        if(numOfCards < numOfGroups*2) {
+            System.out.println(ANSI_RED + "You entered invalid card deck numbers" + ANSI_RESET);
+            requestCardDeck(); 
+        }// Deck impossible to create , ask again
 
         cardDeck = new CardDeck(numOfCards, numOfGroups);
         int remainingCards = numOfCards;
-        System.out.println("Creating deck of size "+cardDeck.getCardGroups().size());
 
         //Initialize all groups with 2 cards
         for(CardGroup group : cardDeck.getCardGroups()){
