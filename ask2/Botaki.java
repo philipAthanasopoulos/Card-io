@@ -50,7 +50,6 @@ public class Botaki extends Player {
 
     private int getMinValue(List<Integer> values) {
         int res = 10000;
-        System.out.println(values.toString());
         for(int number : values){
             if(number < res) res = number;
         }
