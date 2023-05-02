@@ -92,14 +92,25 @@ public class CardDealer {
             return;   
         }
 
+
+        try {
+            input = new Scanner(System.in);
+            System.out.println(player.getName() + " , its your turn");
+            System.out.println("Choose a card group : ");
+            int groupToRemoveFrom = input.nextInt();
+            System.out.println("Choose the number of cards to remove : ");
+            int cardsToRemove = input.nextInt();
+            // if user gave invalid inputs , ask again
+            if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);
+
+        } catch (NullPointerException | NumberFormatException | InputMismatchException e) {
+            // TODO: handle exception
+            System.out.println(ANSI_RED + "You entered invalid character" + ANSI_RESET);
+            askPlayersMove(player);
+        }
+
         
-        System.out.println(player.getName() + " , its your turn");
-        System.out.println("Choose a card group : ");
-        int groupToRemoveFrom = input.nextInt();
-        System.out.println("Choose the number of cards to remove : ");
-        int cardsToRemove = input.nextInt();
-        // if user gave invalid inputs , ask again
-        if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);
+       
     }
 
     //returns true if user gives valid inputs , false otherwise
