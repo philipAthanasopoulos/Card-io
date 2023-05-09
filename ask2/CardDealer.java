@@ -84,6 +84,12 @@ public class CardDealer {
     }
 
     public void askPlayersMove(Player player){
+
+        //ansi green color code
+        final String ANSI_GREEN = "\033[0;32m";
+        //ansi reset color code
+        final String ANSI_RESET = "\u001B[0m";
+
         if(player instanceof Botaki){
             Botaki botaki = (Botaki) player;
             
@@ -95,7 +101,7 @@ public class CardDealer {
 
         try {
             input = new Scanner(System.in);
-            System.out.println(player.getName() + " , its your turn");
+            System.out.println(ANSI_GREEN + player.getName() + ANSI_RESET + " , its your turn");
             System.out.println("Choose a card group : ");
             int groupToRemoveFrom = input.nextInt();
             System.out.println("Choose the number of cards to remove : ");

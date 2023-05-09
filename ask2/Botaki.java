@@ -16,7 +16,6 @@ public class Botaki extends Player {
         System.out.println("Calculating best move...");
         Node tree = new Node(currentDeck);
         createTree(tree);
-        tree.printTree();
         findBestMoveWithMinimax(tree);
         tree.printTree();
         Node nextMove  = new Node(currentDeck);
@@ -40,11 +39,8 @@ public class Botaki extends Player {
             
             values.add(child.getValue());
         }
-        // System.out.println("Values are: " + values);
         if(tree.isMaximizingPlayer()) tree.setValue(getMaxValue(values));
         else tree.setValue(getMinValue(values));
-        // System.out.println(tree.isMaximizingPlayer() ? "Was looking for MAX" : "Was looking for MIN" );
-        // System.out.println("Best move is: " + tree.getCardsToRemove() + " " + tree.getGroup() + " " + tree.getValue());
     }
 
 
@@ -59,8 +55,7 @@ public class Botaki extends Player {
 
 
     private int getMaxValue(List<Integer> values) {
-        int res = -10000;
-        System.out.println(values.toString());
+        int res = Integer.MIN_VALUE;
         for(int number : values){
             if(number > res) res = number;
         }

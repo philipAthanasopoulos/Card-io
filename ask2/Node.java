@@ -64,10 +64,6 @@ public class Node {
             if(group.getNumOfCards() == 0) continue;
             for(int cardsToRemove = 1 ; cardsToRemove <= group.getMaxCardsToRemove() ; cardsToRemove++){
                 Node child = new Node(cardsToRemove, group.getGroupNumber() , cardDeck);
-
-                // if(currentLevel%2 == 0) child.setIsMaximizingPlayer(true);
-                // else child.setIsMaximizingPlayer(false);
-
                 addChild(child); 
                 child.createChildren(maxOrMin.equals("MAX") ? "MIN" : "MAX"); 
             }       

@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+
+import javax.xml.stream.events.Comment;
 public class Table {
     private static Player player;
     private static CardDealer cardDealer;
@@ -17,13 +19,23 @@ public class Table {
 
 
       System.out.println(ANSI_GREEN);
-      System.out.println(" ######     ###    ########  ########          ####  #######  ");
-      System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
-      System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
-      System.out.println("##       ##     ## ########  ##     ## #######  ##  ##     ## ");
-      System.out.println("##       ######### ##   ##   ##     ##          ##  ##     ## ");
-      System.out.println("##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
-      System.out.println(" ######  ##     ## ##     ## ########          ####  ####### \n ");
+      // System.out.println(" ######     ###    ########  ########          ####  #######  ");
+      // System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
+      // System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
+      // System.out.println("##       ##     ## ########  ##     ## #######  ##  ##     ## ");
+      // System.out.println("##       ######### ##   ##   ##     ##          ##  ##     ## ");
+      // System.out.println("##    ## ##     ## ##    ##  ##     ##          ##  ##     ## ");
+      // System.out.println(" ######  ##     ## ##     ## ########          ####  ####### \n ");
+
+      System.out.println(" ________  ________  ________  ________                             ___  ________ ");
+      System.out.println("|\\   ____\\|\\   __  \\|\\   __  \\|\\   ___ \\                           |\\  \\|\\   __  \\    ");
+      System.out.println("\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\_|\\ \\        ____________      \\ \\  \\ \\  \\|\\  \\   ");
+      System.out.println(" \\ \\  \\    \\ \\   __  \\ \\   _  _\\ \\   \\ \\ \\      |\\____________\\     \\ \\  \\ \\  \\ \\  \\  ");
+      System.out.println("  \\ \\  \\____\\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\_\\\\ \\     \\|____________|      \\ \\  \\ \\  \\ \\  \\ ");
+      System.out.println("   \\ \\_______\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\                          \\ \\__\\ \\_______\\      ");
+      System.out.println("    \\|_______|\\|__|\\|__|\\|__|\\|__|\\|_______|                           \\|__|\\|_______|");
+   
+   
       System.out.println(ANSI_RESET);
       
 
@@ -40,8 +52,7 @@ public class Table {
     //init players , dealer and keyboard
     input = new Scanner(System.in);
     printStartScreen();
-    System.out.println("Please enter your name : ");
-    player = new Player(input.next());
+    player = new Player("PLAYER");
     spasmenoBotaki = new Botaki("AI");
     
     cardDealer = new CardDealer();
