@@ -10,7 +10,7 @@ public class Table {
     private static boolean whoPlayedLast; // true is for human false is for machine
     private static String winner;
     final static String ANSI_RESET = "\u001B[0m";
-    final static String ANSI_GREEN = "\033[0;32m";
+    final static String ANSI_BRIGHT_GREEN = "\033[0;92m";
     final static String ANSI_YELLOW = "\033[33m";
     final static String ANSI_RED = "\033[31m";
     
@@ -18,7 +18,7 @@ public class Table {
     public static void printStartScreen(){
 
 
-      System.out.println(ANSI_GREEN);
+      System.out.println(ANSI_BRIGHT_GREEN);
       // System.out.println(" ######     ###    ########  ########          ####  #######  ");
       // System.out.println("##    ##   ## ##   ##     ## ##     ##          ##  ##     ## ");
       // System.out.println("##        ##   ##  ##     ## ##     ##          ##  ##     ##");
@@ -68,7 +68,7 @@ public class Table {
       whoPlayedLast = whoPlayedLast ? false : true;
     }
     calculateWinner();
-    System.out.println(ANSI_GREEN + winner + " has won the game" + ANSI_RESET);
+    System.out.println(ANSI_BRIGHT_GREEN + winner + " has won the game" + ANSI_RESET);
     
   }
 

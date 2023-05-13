@@ -10,7 +10,7 @@ public class CardDealer {
     final String ANSI_RESET = "\u001B[0m";
     final String ANSI_RED = "\033[0;31m";
     final String ANSI_YELLOW = "\033[0;33m";
-    final String ANSI_GREEN = "\033[0;32m";
+    
     final String ANSI_BRIGHT_GREEN = "\033[0;92m";
     final String ANSI_BACKGROUND = "\u001B[43m";
     
@@ -90,7 +90,7 @@ public class CardDealer {
     public void askPlayersMove(Player player){
 
         //ansi green color code
-        final String ANSI_GREEN = "\033[0;32m";
+        final String ANSI_BRIGHT_GREEN = "\033[0;32m";
         //ansi reset color code
         final String ANSI_RESET = "\u001B[0m";
 
@@ -105,7 +105,7 @@ public class CardDealer {
 
         try {
             input = new Scanner(System.in);
-            System.out.println(ANSI_GREEN + player.getName() + ANSI_RESET + " , its your turn");
+            System.out.println(ANSI_BRIGHT_GREEN + player.getName() + ANSI_RESET + " , its your turn");
             System.out.println("Choose a card group : ");
             int groupToRemoveFrom = input.nextInt();
             System.out.println("Choose the number of cards to remove : ");
