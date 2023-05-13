@@ -10,6 +10,7 @@ public class CardDealer {
     final String ANSI_RESET = "\u001B[0m";
     final String ANSI_RED = "\033[0;31m";
     final String ANSI_YELLOW = "\033[0;33m";
+    final String ANSI_GREEN = "\033[0;32m";
 
 
     public void requestCardDeck() {
@@ -54,12 +55,11 @@ public class CardDealer {
         while(remainingCards > 0){
             for(CardGroup group : cardDeck.getCardGroups()){
                Random random = new Random();
-               int cardsToAdd = random.nextInt(remainingCards + 1) ;
+               int maxCardsToAddEachTime = (int) Math.ceil(remainingCards / (double) numOfGroups);
+               int cardsToAdd = random.nextInt(maxCardsToAddEachTime + 1) ;
                group.setNumOfCards(group.getNumOfCards() + cardsToAdd);
                remainingCards -= cardsToAdd;
-               if(remainingCards == 0) break;
-               System.out.println(remainingCards);
-              
+               if(remainingCards == 0) break;              
             }
         }
 
@@ -81,6 +81,7 @@ public class CardDealer {
         for(CardGroup group : cardDeck.getCardGroups()){
             System.out.println("Group " + group.getGroupNumber() +" : "+ group.getNumOfCards() + " cards , " + group.getMaxCardsToRemove() + " can be removed each round");
         }
+        System.out.println();
     }
 
     public void askPlayersMove(Player player){
@@ -94,7 +95,7 @@ public class CardDealer {
             Botaki botaki = (Botaki) player;
             
             botaki.calculateBestMove(cardDeck );
-            removeCards(botaki.getCardsToRemove(), botaki.getGroupToPlay()) ;
+            removeCards(botaki.getCardsToRemove(), botaki.getGroupToPlay() , botaki);
             return;   
         }
 
@@ -107,7 +108,7 @@ public class CardDealer {
             System.out.println("Choose the number of cards to remove : ");
             int cardsToRemove = input.nextInt();
             // if user gave invalid inputs , ask again
-            if(removeCards(cardsToRemove, groupToRemoveFrom) == false) askPlayersMove(player);
+            if(removeCards(cardsToRemove, groupToRemoveFrom , player) == false) askPlayersMove(player);
 
         } catch (NullPointerException | NumberFormatException | InputMismatchException e) {
             // TODO: handle exception
@@ -120,12 +121,12 @@ public class CardDealer {
     }
 
     //returns true if user gives valid inputs , false otherwise
-    public boolean removeCards(int cardsToRemove , int groupToRemoveFrom){
+    public boolean removeCards(int cardsToRemove , int groupToRemoveFrom , Player player){
         for(CardGroup group : cardDeck.getCardGroups()){
             if(group.getGroupNumber() == groupToRemoveFrom){
                 if(group.removeCards(cardsToRemove) == false) return false;
                 else {
-                    System.out.println(ANSI_YELLOW + "removed " + cardsToRemove + " cards from group " + groupToRemoveFrom + ANSI_RESET);
+                    System.out.println(ANSI_YELLOW + player.getName() + " removed " + cardsToRemove + " cards from group " + groupToRemoveFrom + ANSI_RESET);
                     return true;
                 }
             }

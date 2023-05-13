@@ -68,7 +68,7 @@ public class Table {
       whoPlayedLast = whoPlayedLast ? false : true;
     }
     calculateWinner();
-    System.out.println(winner + " has won the game");
+    System.out.println(ANSI_GREEN + winner + " has won the game" + ANSI_RESET);
     
   }
 
