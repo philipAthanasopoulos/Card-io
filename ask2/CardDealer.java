@@ -11,6 +11,9 @@ public class CardDealer {
     final String ANSI_RED = "\033[0;31m";
     final String ANSI_YELLOW = "\033[0;33m";
     final String ANSI_GREEN = "\033[0;32m";
+    final String ANSI_BRIGHT_GREEN = "\033[0;92m";
+    final String ANSI_BACKGROUND = "\u001B[43m";
+    
 
 
     public void requestCardDeck() {
@@ -18,9 +21,9 @@ public class CardDealer {
         input = new Scanner(System.in);
 
         try {
-            System.out.println("Please give me the number of cards");
+            System.out.println("Please enter the number of " + ANSI_BRIGHT_GREEN + "CARDS" + ANSI_RESET);
             numOfCards = input.nextInt();
-            System.out.println("Please give me the number of groups");
+            System.out.println("Please enter the number of " + ANSI_BRIGHT_GREEN + "GROUPS" + ANSI_RESET);
             numOfGroups = input.nextInt();
             createCardDeck(numOfCards,numOfGroups);
         } catch (NullPointerException  | NumberFormatException | InputMismatchException e) {
