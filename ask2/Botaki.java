@@ -12,7 +12,7 @@ public class Botaki extends Player {
     }
 
     
-    public void calculateBestMove(CardDeck currentDeck){
+    public void executeBestMove(CardDeck currentDeck){
         System.out.println("Calculating best move...");
         Node tree = new Node(currentDeck);
         createTree(tree);
@@ -96,7 +96,7 @@ public class Botaki extends Player {
         CardDealer dealer = new CardDealer();
         dealer.requestCardDeck();
         dealer.printCardDeck();
-        botaki.calculateBestMove(dealer.cardDeck);
+        botaki.executeBestMove(dealer.cardDeck);
     }
 
 

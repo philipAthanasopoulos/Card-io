@@ -97,7 +97,7 @@ public class CardDealer {
         if(player instanceof Botaki){
             Botaki botaki = (Botaki) player;
             
-            botaki.calculateBestMove(cardDeck );
+            botaki.executeBestMove(cardDeck);
             removeCards(botaki.getCardsToRemove(), botaki.getGroupToPlay() , botaki);
             return;   
         }
