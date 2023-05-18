@@ -61,6 +61,12 @@ public class Table {
     //-------------------HERE THE GAME BEGINS----------------------------------------------------
     
     cardDealer.requestCardDeck();
+    //ask player if he want to see the minimax tree
+    System.out.println("Do you want to see the minimax tree? (y/n)");
+    String answer = input.nextLine();
+    if(answer.equals("y")) spasmenoBotaki.setShowTree(true);
+    else spasmenoBotaki.setShowTree(false);
+
     
     while(cardDealer.checkCards()){
       cardDealer.printCardDeck();

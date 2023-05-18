@@ -5,6 +5,7 @@ public class Botaki extends Player {
 
     private int groupToPlay;
     private int cardsToRemove;
+    private boolean showTree = false;
     
     
     public Botaki(String name ) {
@@ -17,7 +18,7 @@ public class Botaki extends Player {
         Node tree = new Node(currentDeck);
         createTree(tree);
         findBestMoveWithMinimax(tree);
-        tree.printTree();
+        if(showTree) tree.printTree();
         Node nextMove  = new Node(currentDeck);
         for(Node child : tree.getChildren()){
             if(child.getValue() == tree.getValue()){
@@ -92,6 +93,10 @@ public class Botaki extends Player {
         dealer.requestCardDeck();
         dealer.printCardDeck();
         botaki.executeBestMove(dealer.cardDeck);
+    }
+
+
+    public void setShowTree(boolean b) {
     }
 
 
