@@ -1,13 +1,14 @@
 
 import java.util.Scanner;
 
+import javax.print.FlavorException;
 import javax.xml.stream.events.Comment;
 public class Table {
     private static Player player;
     private static CardDealer cardDealer;
     private static Botaki spasmenoBotaki;  
     private static Scanner input;
-    private static boolean whoPlayedLast; // true is for human false is for machine
+    private static boolean whoPlayedLast = true; // true is for human false is for machine
     private static String winner;
     final static String ANSI_RESET = "\u001B[0m";
     final static String ANSI_BRIGHT_GREEN = "\033[0;92m";

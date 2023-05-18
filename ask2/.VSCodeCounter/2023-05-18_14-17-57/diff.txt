@@ -1,0 +1,34 @@
+Date : 2023-05-18 14:17:57
+Directory : c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2
+Total : 9 files,  173 codes, -20 comments, 22 blanks, all 175 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |          8 |        112 |        -20 |         22 |        114 |
+| XML      |          1 |         61 |          0 |          0 |         61 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                    |          9 |        173 |        -20 |         22 |        175 |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                             | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.class     | Java     |         13 |          0 |          0 |         13 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Botaki.java      | Java     |         20 |         -2 |          2 |         20 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.class | Java     |         13 |          0 |          0 |         13 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\CardDealer.java  | Java     |         21 |          4 |         10 |         35 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.class       | Java     |         22 |        -15 |          0 |          7 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Node.java        | Java     |         10 |        -14 |          7 |          3 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.class      | Java     |         10 |          0 |          0 |         10 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\Table.java       | Java     |          3 |          7 |          3 |         13 |
+| c:\Users\Philip\Desktop\UOI\AI\New folder\ask2\ask2\ask2.drawio.svg  | XML      |         61 |          0 |          0 |         61 |
+| Total                                                                |          |        173 |        -20 |         22 |        175 |
++----------------------------------------------------------------------+----------+------------+------------+------------+------------+
