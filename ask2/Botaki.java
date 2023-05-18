@@ -53,7 +53,7 @@ public class Botaki extends Player {
         
     }
 
-
+    
     private int getMaxValue(List<Integer> values) {
         int res = Integer.MIN_VALUE;
         for(int number : values){
@@ -61,11 +61,6 @@ public class Botaki extends Player {
         }
         return res;
     }
-
-
-
-
-
 
 
     public void createTree( Node node){

@@ -112,8 +112,6 @@ public class Node {
         this.children = children;
     }
 
-   
-
     public boolean isMaximizingPlayer() {
         return this.isMaximizingPlayer;
     }
